@@ -18,6 +18,14 @@ public:
 		std::cout << test2;
 		std::cout << test3;
 	}
+	void AltTest() {
+		std::cout << "Test";
+		std::string var = "Test";
+		std::cout << var << " ";
+		std::string tmp;
+		tmp = var;
+		std::cout << tmp;
+	}
 
 };
 
