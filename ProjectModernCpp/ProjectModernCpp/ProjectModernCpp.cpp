@@ -16,6 +16,12 @@ public:
 	void test() {
 		std::cout << test1;
 		std::cout << test2;
+		int unFelDeNumar = 30;
+		std::cout << unFelDeNumar;
+		unFelDeNumar = 20;
+		std::cout << unFelDeNumar;
+		unFelDeNumar = 10;
+		std::cout << unFelDeNumar;
 		std::cout << test3;
 	}
 	void AltTest() {
