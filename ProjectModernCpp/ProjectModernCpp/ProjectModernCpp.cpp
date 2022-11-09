@@ -14,8 +14,25 @@ public:
 		test3 = 3.3;
 	}
 	void test() {
+		// test
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				std::cout << "Test? ";
+			}
+			std::cout << "\n";
+		}
+		int a;
+		std::cin >> a;
+		if (a == 2)
+			return;
 		std::cout << test1;
 		std::cout << test2;
+		int unFelDeNumar = 30;
+		std::cout << unFelDeNumar;
+		unFelDeNumar = 20;
+		std::cout << unFelDeNumar;
+		unFelDeNumar = 10;
+		std::cout << unFelDeNumar;
 		std::cout << test3;
 	}
 	void AltTest() {
