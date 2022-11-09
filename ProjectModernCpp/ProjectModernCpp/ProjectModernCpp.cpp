@@ -1,9 +1,8 @@
 ﻿#include "ProjectModernCpp.h"
 
-using namespace std;
-
 int main()
 {
-	cout << "Hello CMake." << endl;
+	std::cout << "Testing\n";
+
 	return 0;
 }
