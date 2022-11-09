@@ -14,9 +14,17 @@ public:
 		test3 = 3.3;
 	}
 	void test() {
-		std::cout << test1;
-		std::cout << test2;
-		std::cout << test3;
+		// test
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				std::cout << "Test? ";
+			}
+			std::cout << "\n";
+		}
+		int a;
+		std::cin >> a;
+		if (a == 2)
+			return;
 	}
 	void AltTest() {
 		std::cout << "Test";
