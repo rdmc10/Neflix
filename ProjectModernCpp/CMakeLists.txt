@@ -7,7 +7,7 @@ project ("ProjectModernCpp")
 
 # Include sub-projects.
 add_subdirectory ("ProjectModernCpp")
-
+add_subdirectory(dependencies)
 
 ##### Project wide setup ####
 set(CMAKE_CXX_STANDARD 17)
@@ -15,6 +15,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 ### Dependencies ###
-add_subdirectory(dependencies)
+
 
 ### Main Targets ###
