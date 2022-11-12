@@ -14,7 +14,7 @@ public:
 public:
 
 	Movie();
-	Movie(const uint32_t& id, const Type& type, /*ACTORS*/ const uint16_t releaseDate, const uint16_t m_duration,
+	Movie(const uint32_t& id, const Type& type, /*ACTORS*/ const uint16_t releaseDate, const uint16_t duration,
 		/*CATEGORIES*/ std::string description);
 	Movie(const Movie& movie);
 
@@ -38,6 +38,7 @@ public:
 
 private:
 
+	static uint32_t m_movieNumber;
 	uint32_t m_movieId;
 	Type m_type;
 	std::string m_name;
@@ -46,6 +47,5 @@ private:
 	uint16_t m_duration;
 	// TODO: List of categories in a movie
 	std::string m_description;
-
 
 };
