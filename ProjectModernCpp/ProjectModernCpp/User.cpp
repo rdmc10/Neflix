@@ -1,5 +1,7 @@
 #include "User.h"
 
+uint32_t User::m_userNumber = 1;
+
 User::User()
 	:m_userId(m_userNumber++)
 	,m_username("")

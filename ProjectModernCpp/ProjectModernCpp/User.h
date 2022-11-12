@@ -34,5 +34,4 @@ private:
 	//TODO: categories/favorite actors etc
 };
 
-uint32_t User::m_userNumber = 1;
 
