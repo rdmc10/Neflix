@@ -11,6 +11,13 @@ public:
 	std::string GetEmail();
 	std::string GetBirthdate();
 
+	void SetID(uint32_t id);
+	void SetUsername(const std::string& username);
+	void SetFirstName(const std::string& firstName);
+	void SetLastName(const std::string& lastName);
+	void SetEmail(const std::string& email);
+	void SetBirthDate(const std::string& birthDate);
+
 private:
 	uint32_t m_userId;
 	std::string m_username;
