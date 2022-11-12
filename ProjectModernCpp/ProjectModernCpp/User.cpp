@@ -19,6 +19,18 @@ User::User(const uint32_t& id, const std::string& userName, const std::string& f
 	m_email(email),
 	m_birthDate(birthDate)
 {
+
+}
+
+User::User(const User& user)
+	:m_userId(user.m_userId)
+	, m_username(user.m_username)
+	, m_firstName(user.m_firstName)
+	, m_lastName(user.m_lastName)
+	, m_email(user.m_email)
+	, m_birthDate(user.m_birthDate)
+{
+
 }
 
 uint32_t User::GetID() const
