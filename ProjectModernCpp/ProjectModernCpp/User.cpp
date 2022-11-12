@@ -1,7 +1,7 @@
 #include "User.h"
 
 User::User()
-	:m_userId(0)
+	:m_userId(m_userNumber++)
 	,m_username("")
 	,m_firstName("")
 	,m_lastName("")
@@ -9,6 +9,16 @@ User::User()
 	,m_birthDate("")
 {
 
+}
+
+User::User(const uint32_t& id, const std::string& userName, const std::string& firstName, const std::string& lastName, const std::string& email, const std::string& birthDate)
+	:m_userId(m_userNumber++),
+	m_username(userName),
+	m_firstName(firstName),
+	m_lastName(lastName),
+	m_email(email),
+	m_birthDate(birthDate)
+{
 }
 
 uint32_t User::GetID() const

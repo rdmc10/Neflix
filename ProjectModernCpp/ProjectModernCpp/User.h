@@ -4,7 +4,9 @@
 class User
 {
 public:
-	User() = default;
+	User();
+	User(const uint32_t& id, const std::string& userName, const std::string& firstName, const std::string& lastName,
+		const std::string& email, const std::string& birthDate);
 
 	uint32_t GetID() const;
 	std::string GetUsername() const;

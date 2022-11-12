@@ -6,8 +6,5 @@ using namespace sqlite_orm;
 
 int main()
 {
-    User u;
-    std::cout << u.GetID();
-    std::cout << "ok";
     return 0;
 }
