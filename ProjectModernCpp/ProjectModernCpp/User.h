@@ -1,8 +1,16 @@
 #pragma once
-#include <iostream>
+#include <string>
 #include <cstdint>
 class User
 {
+public:
+	uint32_t GetID();
+	std::string GetUsername();
+	std::string GetFirstName();
+	std::string GetLastName();
+	std::string GetEmail();
+	std::string GetBirthdate();
+
 private:
 	uint32_t m_userId;
 	std::string m_username;
