@@ -11,7 +11,7 @@ public:
 	std::string GetEmail() const;
 	std::string GetBirthdate() const;
 
-	void SetID(uint32_t id);
+	void SetID(const uint32_t& id);
 	void SetUsername(const std::string& username);
 	void SetFirstName(const std::string& firstName);
 	void SetLastName(const std::string& lastName);
