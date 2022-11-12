@@ -4,12 +4,12 @@
 class User
 {
 public:
-	uint32_t GetID();
-	std::string GetUsername();
-	std::string GetFirstName();
-	std::string GetLastName();
-	std::string GetEmail();
-	std::string GetBirthdate();
+	uint32_t GetID() const;
+	std::string GetUsername() const;
+	std::string GetFirstName() const;
+	std::string GetLastName() const;
+	std::string GetEmail() const;
+	std::string GetBirthdate() const;
 
 	void SetID(uint32_t id);
 	void SetUsername(const std::string& username);
