@@ -23,6 +23,7 @@ public:
 	void SetBirthDate(const std::string& birthDate);
 
 private:
+	static uint32_t m_userNumber;
 	uint32_t m_userId;
 	std::string m_username;
 	std::string m_firstName;
@@ -30,7 +31,7 @@ private:
 	std::string m_email;
 	std::string m_birthDate;
 	//TODO: categories/favorite actors etc
-
-
 };
+
+uint32_t User::m_userNumber = 1;
 
