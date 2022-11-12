@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Movie.cpp" />
     <ClCompile Include="ProjectModernCpp.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
