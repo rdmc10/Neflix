@@ -1,5 +1,16 @@
 #include "User.h"
 
+User::User()
+	:m_userId(0)
+	,m_username("")
+	,m_firstName("")
+	,m_lastName("")
+	,m_email("")
+	,m_birthDate("")
+{
+
+}
+
 uint32_t User::GetID() const
 {
 	return m_userId;

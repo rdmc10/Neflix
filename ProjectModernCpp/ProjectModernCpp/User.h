@@ -4,6 +4,8 @@
 class User
 {
 public:
+	User() = default;
+
 	uint32_t GetID() const;
 	std::string GetUsername() const;
 	std::string GetFirstName() const;
