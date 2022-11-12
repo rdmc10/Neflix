@@ -29,3 +29,33 @@ std::string User::GetBirthdate() const
 {
 	return m_birthDate;
 }
+
+void User::SetID(const uint32_t& id)
+{
+	m_userId = id;
+}
+
+void User::SetUsername(const std::string& username)
+{
+	m_username = username;
+}
+
+void User::SetFirstName(const std::string& firstName)
+{
+	m_firstName = firstName;
+}
+
+void User::SetLastName(const std::string& lastName)
+{
+	m_lastName = lastName;
+}
+
+void User::SetEmail(const std::string& email)
+{
+	m_email = email;
+}
+
+void User::SetBirthDate(const std::string& birthDate)
+{
+	m_birthDate = birthDate;
+}
