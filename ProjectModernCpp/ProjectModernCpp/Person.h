@@ -15,6 +15,7 @@ public:
 	Person() = default;
 	Person(const std::string& firstName, const std::string& lastName, const Role& role,
 		const std::set<Movie>& movieList);
+	Person(const Person& pers);
 
 	void SetFirstName(const std::string& firstName);
 	void SetLastName(const std::string& lastName);

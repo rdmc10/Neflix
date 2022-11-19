@@ -16,6 +16,14 @@ Person::Person(const std::string& firstName, const std::string& lastName, const 
 {
 }
 
+Person::Person(const Person& pers)
+{
+	m_firstName = pers.m_firstName;
+	m_lastName = pers.m_lastName;
+	m_role = pers.m_role;
+	m_movieList = pers.m_movieList;
+}
+
 void Person::SetFirstName(const std::string& firstName)
 {
 	m_firstName = firstName;

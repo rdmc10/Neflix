@@ -1,4 +1,5 @@
 #pragma once
+#include "Person.h"
 #include <cstdint>
 #include <string>
 
@@ -21,7 +22,7 @@ public:
 	uint32_t GetMovieID() const;
 	Type GetMovieType() const;
 	std::string GetName() const;
-	// Getter for actors
+	std::set<Person> GetCast() const;
 	uint16_t GetReleaseDate() const;
 	uint16_t GetDuration() const;
 	// Getter for categories
@@ -30,7 +31,7 @@ public:
 	void SetID(const uint32_t& id);
 	void SetType(const Type& type);
 	void SetName(const std::string& name);
-	// Setter for actors;
+	void SetCast(const std::set<Person>& cast);
 	void SetReleaseDate(const uint16_t& releaseDate);
 	void SetDuration(const uint16_t& duration);
 	// Setter for categories
@@ -42,7 +43,7 @@ private:
 	uint32_t m_movieId;
 	Type m_type;
 	std::string m_name;
-	// TODO: List of actors in a movie(cast)
+	std::set<Person> m_cast;
 	uint16_t m_releaseDate;
 	uint16_t m_duration;
 	// TODO: List of categories in a movie

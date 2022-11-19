@@ -12,10 +12,11 @@ Movie::Movie()
 {
 }
 
-Movie::Movie(const uint32_t& id, const Type& type, const uint16_t releaseDate, const uint16_t duration,
+Movie::Movie(const uint32_t& id, const Type& type,const std::set<Person>& cast, const uint16_t releaseDate, const uint16_t duration,
 	std::string description)
 	: m_movieId(m_movieNumber++)
 	, m_type(type)
+	, m_cast(cast)
 	, m_releaseDate(releaseDate)
 	, m_duration(duration)
 	, m_description(description)
@@ -25,6 +26,7 @@ Movie::Movie(const uint32_t& id, const Type& type, const uint16_t releaseDate, c
 Movie::Movie(const Movie& movie)
 	:m_movieId(movie.m_movieId)
 	, m_type(movie.m_type)
+	, m_cast(movie.m_cast)
 	, m_releaseDate(movie.m_releaseDate)
 	, m_duration(movie.m_duration)
 	, m_description(movie.m_description)
@@ -44,6 +46,11 @@ Movie::Type Movie::GetMovieType() const
 std::string Movie::GetName() const
 {
 	return m_name;
+}
+
+std::set<Person> Movie::GetCast() const
+{
+	return m_cast;
 }
 
 uint16_t Movie::GetReleaseDate() const
@@ -74,6 +81,11 @@ void Movie::SetType(const Type& type)
 void Movie::SetName(const std::string& name)
 {
 	m_name = name;
+}
+
+void Movie::SetCast(const std::set<Person>& cast)
+{
+	m_cast = cast;
 }
 
 void Movie::SetReleaseDate(const uint16_t& releaseDate)
