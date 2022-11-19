@@ -1,4 +1,5 @@
 #include "Person.h"
+#include "Movie.h"
 
 Person::Person()
 	:m_firstName("")
@@ -62,4 +63,11 @@ Person::Role Person::GetRole() const
 std::set<Movie> Person::GetMovieList() const
 {
 	return m_movieList;
+}
+
+bool Person::operator<(const Person& person)
+{
+	if (this->m_lastName == person.m_lastName)
+		return this->m_firstName < person.m_firstName;
+	return this->m_lastName < person.m_lastName;
 }
