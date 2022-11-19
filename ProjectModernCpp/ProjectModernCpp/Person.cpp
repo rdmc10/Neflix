@@ -1,4 +1,5 @@
 #include "Person.h"
+#include "Movie.h"
 
 Person::Person()
 	:m_firstName("")
