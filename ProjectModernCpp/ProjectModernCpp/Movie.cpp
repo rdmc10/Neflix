@@ -14,7 +14,7 @@ Movie::Movie()
 
 Movie::Movie(const uint32_t& id, const Type& type, const uint16_t releaseDate, const uint16_t duration,
 	std::string description)
-	: m_movieId(id)
+	: m_movieId(m_movieNumber++)
 	, m_type(type)
 	, m_releaseDate(releaseDate)
 	, m_duration(duration)

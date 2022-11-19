@@ -1,5 +1,21 @@
 #include "Person.h"
 
+Person::Person()
+	:m_firstName("")
+	,m_lastName("")
+	,m_role(Person::Role::Actor)
+{
+}
+
+Person::Person(const std::string& firstName, const std::string& lastName, const Role& role
+	, const std::set<Movie>& movieList)
+	:m_firstName(firstName)
+	,m_lastName(lastName)
+	,m_role(role)
+	,m_movieList(movieList)
+{
+}
+
 void Person::SetFirstName(const std::string& firstName)
 {
 	m_firstName = firstName;
