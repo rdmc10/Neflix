@@ -351,3 +351,5 @@ MigrationBackup/
 
 #CMake out
 out/
+
+*.vcxproj*
