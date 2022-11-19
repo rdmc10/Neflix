@@ -102,8 +102,3 @@ void Movie::SetDescription(const std::string& description)
 {
 	m_description = description;
 }
-
-bool Movie::operator<(const Movie& movie)
-{
-	return this->m_name < movie.m_name;
-}

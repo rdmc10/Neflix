@@ -37,8 +37,6 @@ public:
 	// Setter for categories
 	void SetDescription(const std::string& description);
 
-	bool operator<(const Movie& movie);
-
 private:
 
 	static uint32_t m_movieNumber;

@@ -1,9 +1,10 @@
 #include <iostream>
-#include <sqlite_orm.h>
+//#include <sqlite_orm.h>
 #include "User.h"
 #include "Movie.h"
+#include "Person.h"
 
-using namespace sqlite_orm;
+//using namespace sqlite_orm;
 
 int main()
 {

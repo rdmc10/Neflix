@@ -1,9 +1,7 @@
 #pragma once
+#include "Movie.h"
 #include <set>
 #include <string>
-
-class Movie;
-
 class Person
 {
 public:
@@ -14,7 +12,7 @@ public:
 
 public:
 
-	Person();
+	Person() = default;
 	Person(const std::string& firstName, const std::string& lastName, const Role& role,
 		const std::set<Movie>& movieList);
 	Person(const Person& pers);
@@ -27,8 +25,6 @@ public:
 	std::string GetLastName() const;
 	Role GetRole() const;
 	std::set<Movie> GetMovieList() const;
-
-	bool operator<(const Person& person);
 
 private:
 	std::string m_firstName;
