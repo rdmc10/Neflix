@@ -26,6 +26,8 @@ public:
 	Role GetRole() const;
 	std::set<Movie> GetMovieList() const;
 
+	bool operator<(const Person& person);
+
 private:
 	std::string m_firstName;
 	std::string m_lastName;
