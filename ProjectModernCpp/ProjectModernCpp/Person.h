@@ -19,6 +19,8 @@ public:
 		const std::set<Movie>& movieList);
 	Person(const Person& pers);
 
+	Person& operator=(const Person& person);
+
 	void SetFirstName(const std::string& firstName);
 	void SetLastName(const std::string& lastName);
 	void SetRole(const Role& role);

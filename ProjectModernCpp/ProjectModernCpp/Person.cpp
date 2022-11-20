@@ -25,6 +25,16 @@ Person::Person(const Person& pers)
 	m_movieList = pers.m_movieList;
 }
 
+Person& Person::operator=(const Person& person)
+{
+	m_firstName = person.GetFirstName();
+	m_lastName = person.GetLastName();
+	m_role = person.GetRole();
+	m_movieList = person.GetMovieList();
+
+	return *this;
+}
+
 void Person::SetFirstName(const std::string& firstName)
 {
 	m_firstName = firstName;
