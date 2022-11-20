@@ -35,6 +35,18 @@ User::User(const User& user)
 
 }
 
+User& User::operator=(const User& user)
+{
+	m_userId = user.GetID();
+	m_username = user.GetUsername();
+	m_firstName = user.GetFirstName();
+	m_lastName = user.GetLastName();
+	m_email = user.GetEmail();
+	m_birthDate = user.GetBirthdate();
+
+	return *this;
+}
+
 uint32_t User::GetID() const
 {
 	return m_userId;

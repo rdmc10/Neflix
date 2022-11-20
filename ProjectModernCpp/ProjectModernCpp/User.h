@@ -9,6 +9,8 @@ public:
 		const std::string& email, const std::string& birthDate);
 	User(const User& user);
 
+	User& operator=(const User& user);
+
 	uint32_t GetID() const;
 	std::string GetUsername() const;
 	std::string GetFirstName() const;
