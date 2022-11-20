@@ -18,6 +18,10 @@ public:
 	Movie(const uint32_t& id, const Type& type, const std::set<Person>& cast,const uint16_t releaseDate, const uint16_t duration,
 		/*CATEGORIES*/ std::string description);
 	Movie(const Movie& movie);
+	Movie(Movie&& movie);
+
+	Movie& operator=(Movie&& movie);
+	Movie& operator=(const Movie& movie);
 
 	uint32_t GetMovieID() const;
 	Type GetMovieType() const;

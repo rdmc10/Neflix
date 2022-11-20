@@ -33,6 +33,30 @@ Movie::Movie(const Movie& movie)
 {
 }
 
+Movie::Movie(Movie&& movie)
+{
+	*this = std::move(movie);
+}
+
+Movie& Movie::operator=(Movie&& movie)
+{
+	m_movieId = movie.GetMovieID();
+	m_type = movie.GetMovieType();
+	m_cast = movie.GetCast();
+	m_releaseDate = movie.GetReleaseDate();
+	m_duration = movie.GetDuration();
+	m_description = movie.GetDescription();
+
+	new(&movie) Movie;
+	return *this;
+
+}
+
+Movie& Movie::operator=(const Movie& movie)
+{
+	// TODO: insert return statement here
+}
+
 uint32_t Movie::GetMovieID() const
 {
 	return m_movieId;
