@@ -38,7 +38,7 @@ Movie::Movie(Movie&& movie)
 	*this = std::move(movie);
 }
 
-Movie& Movie::operator=(Movie&& movie)
+Movie& Movie::operator=(Movie&& movie) 
 {
 	m_movieId = movie.GetMovieID();
 	m_type = movie.GetMovieType();
@@ -49,12 +49,18 @@ Movie& Movie::operator=(Movie&& movie)
 
 	new(&movie) Movie;
 	return *this;
-
 }
 
 Movie& Movie::operator=(const Movie& movie)
 {
-	// TODO: insert return statement here
+	m_movieId = movie.GetMovieID();
+	m_type = movie.GetMovieType();
+	m_cast = movie.GetCast();
+	m_releaseDate = movie.GetReleaseDate();
+	m_duration = movie.GetDuration();
+	m_description = movie.GetDescription();
+
+	return *this;
 }
 
 uint32_t Movie::GetMovieID() const
