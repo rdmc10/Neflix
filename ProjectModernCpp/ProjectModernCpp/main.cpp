@@ -7,9 +7,6 @@
 using namespace sqlite_orm;
 int main(int argc, char *argv[])
 {
-    Movie m;
-    User u;
-    u.SetBirthDate("asd");
     QApplication a(argc, argv);
     ProjectModernCpp w;
     w.show();
