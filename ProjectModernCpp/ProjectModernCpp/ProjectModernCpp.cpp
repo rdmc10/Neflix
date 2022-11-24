@@ -1,11 +1,10 @@
-#include <iostream>
-//#include <sqlite_orm.h>
-#include "User.h"
-#include "Movie.h"
+#include "ProjectModernCpp.h"
 
-//using namespace sqlite_orm;
-
-int main()
+ProjectModernCpp::ProjectModernCpp(QWidget *parent)
+    : QMainWindow(parent)
 {
-    return 0;
+    ui.setupUi(this);
 }
+
+ProjectModernCpp::~ProjectModernCpp()
+{}

@@ -4,11 +4,11 @@ uint32_t User::m_userNumber = 1;
 
 User::User()
 	:m_userId(m_userNumber++)
-	,m_username("")
-	,m_firstName("")
-	,m_lastName("")
-	,m_email("")
-	,m_birthDate("")
+	, m_username("")
+	, m_firstName("")
+	, m_lastName("")
+	, m_email("")
+	, m_birthDate("")
 {
 
 }
@@ -106,3 +106,4 @@ void User::SetBirthDate(const std::string& birthDate)
 {
 	m_birthDate = birthDate;
 }
+

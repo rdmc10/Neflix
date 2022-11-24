@@ -12,7 +12,7 @@ Movie::Movie()
 {
 }
 
-Movie::Movie(const uint32_t& id, const Type& type,const std::set<Person>& cast, const uint16_t releaseDate, const uint16_t duration,
+Movie::Movie(const uint32_t& id, const Type& type, const std::set<Person>& cast, const uint16_t releaseDate, const uint16_t duration,
 	std::string description)
 	: m_movieId(m_movieNumber++)
 	, m_type(type)
@@ -38,7 +38,7 @@ Movie::Movie(Movie&& movie)
 	*this = std::move(movie);
 }
 
-Movie& Movie::operator=(Movie&& movie) 
+Movie& Movie::operator=(Movie&& movie)
 {
 	m_movieId = movie.GetMovieID();
 	m_type = movie.GetMovieType();
