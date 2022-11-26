@@ -93,6 +93,11 @@ uint16_t Movie::GetDuration() const
 	return m_duration;
 }
 
+std::vector<MovieCategory> Movie::GetCategories() const
+{
+	return m_categories;
+}
+
 std::string Movie::GetDescription() const
 {
 	return m_description;
@@ -131,6 +136,11 @@ void Movie::SetDuration(const uint16_t& duration)
 void Movie::SetDescription(const std::string& description)
 {
 	m_description = description;
+}
+
+void Movie::AddCategory(const MovieCategory& category)
+{
+	m_categories.push_back(category);
 }
 
 bool Movie::operator<(const Movie& movie)

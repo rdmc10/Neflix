@@ -112,6 +112,9 @@
     <ClInclude Include="Person.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Desktop\filme.csv" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />

@@ -1,7 +1,10 @@
 #pragma once
 #include "Person.h"
+#include "MovieCategory.h"
 #include <cstdint>
 #include <string>
+#include <vector>
+//#include <unordered_set>
 
 class Movie {
 
@@ -29,7 +32,7 @@ public:
 	std::set<Person> GetCast() const;
 	uint16_t GetReleaseDate() const;
 	uint16_t GetDuration() const;
-	// Getter for categories
+	std::vector<MovieCategory> GetCategories() const;
 	std::string GetDescription() const;
 
 	void SetID(const uint32_t& id);
@@ -40,6 +43,8 @@ public:
 	void SetDuration(const uint16_t& duration);
 	// Setter for categories
 	void SetDescription(const std::string& description);
+
+	void AddCategory(const MovieCategory& category);
 
 	bool operator<(const Movie& movie);
 
@@ -52,7 +57,8 @@ private:
 	std::set<Person> m_cast;
 	uint16_t m_releaseDate;
 	uint16_t m_duration;
-	// TODO: List of categories in a movie
+	std::vector<MovieCategory> m_categories; // TODO: replace vector with unordered_set
 	std::string m_description;
 
 };
+

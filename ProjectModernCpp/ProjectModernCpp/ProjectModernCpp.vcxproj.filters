@@ -67,4 +67,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Desktop\filme.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
