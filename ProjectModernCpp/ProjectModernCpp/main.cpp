@@ -3,6 +3,7 @@
 #include "User.h"
 #include <sqlite_orm/sqlite_orm.h>
 #include "Movie.h"
+#include "Register.h"
 
 using namespace sqlite_orm;
 int main(int argc, char *argv[])
