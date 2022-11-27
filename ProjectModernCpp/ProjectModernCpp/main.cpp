@@ -10,7 +10,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     ProjectModernCpp w;
-    Register r;
-    r.show();
+    w.show();
     return a.exec();
 }
