@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_ProjectModernCpp.h"
+#include "Register.h"
 
 class ProjectModernCpp : public QMainWindow
 {
@@ -11,7 +12,9 @@ public:
     ProjectModernCpp(QWidget *parent = nullptr);
     ~ProjectModernCpp();
 
-private:
-    Ui::ProjectModernCppClass ui;
+private slots:
+    void registerButtonClicked();
 
+private:
+    Ui::ProjectModernCppClass *ui;
 };
