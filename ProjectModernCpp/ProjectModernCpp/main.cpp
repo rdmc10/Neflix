@@ -3,12 +3,14 @@
 #include "User.h"
 #include <sqlite_orm/sqlite_orm.h>
 #include "Movie.h"
+#include "Register.h"
 
 using namespace sqlite_orm;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     ProjectModernCpp w;
-    w.show();
+    Register r;
+    r.show();
     return a.exec();
 }

@@ -100,16 +100,19 @@
     <ClCompile Include="MovieCategory.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="ProjectModernCpp.cpp" />
+    <ClCompile Include="Register.cpp" />
     <ClCompile Include="User.cpp" />
     <QtRcc Include="ProjectModernCpp.qrc" />
     <QtUic Include="ProjectModernCpp.ui" />
     <QtMoc Include="ProjectModernCpp.h" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="Register.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieCategory.h" />
     <ClInclude Include="Person.h" />
+    <QtMoc Include="Register.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
