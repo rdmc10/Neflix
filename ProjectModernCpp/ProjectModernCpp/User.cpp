@@ -5,6 +5,7 @@ uint32_t User::m_userNumber = 1;
 User::User()
 	:m_userId(m_userNumber++)
 	, m_username("")
+	, m_password("")
 	, m_firstName("")
 	, m_lastName("")
 	, m_email("")
@@ -13,8 +14,9 @@ User::User()
 
 }
 
-User::User(const uint32_t& id, const std::string& userName, const std::string& firstName, const std::string& lastName, const std::string& email, const std::string& birthDate)
+User::User(const uint32_t& id, const std::string& password, const std::string& userName, const std::string& firstName, const std::string& lastName, const std::string& email, const std::string& birthDate)
 	:m_userId(m_userNumber++),
+	m_password(password),
 	m_username(userName),
 	m_firstName(firstName),
 	m_lastName(lastName),
@@ -27,6 +29,7 @@ User::User(const uint32_t& id, const std::string& userName, const std::string& f
 User::User(const User& user)
 	:m_userId(user.m_userId)
 	, m_username(user.m_username)
+	, m_password(user.m_password)
 	, m_firstName(user.m_firstName)
 	, m_lastName(user.m_lastName)
 	, m_email(user.m_email)
@@ -38,6 +41,7 @@ User::User(const User& user)
 User& User::operator=(const User& user)
 {
 	m_userId = user.GetID();
+	m_password = user.GetPassword();
 	m_username = user.GetUsername();
 	m_firstName = user.GetFirstName();
 	m_lastName = user.GetLastName();
@@ -50,6 +54,11 @@ User& User::operator=(const User& user)
 uint32_t User::GetID() const
 {
 	return m_userId;
+}
+
+std::string User::GetPassword() const
+{
+	return m_password;
 }
 
 std::string User::GetUsername() const
@@ -80,6 +89,11 @@ std::string User::GetBirthdate() const
 void User::SetID(const uint32_t& id)
 {
 	m_userId = id;
+}
+
+void User::SetPassword(const std::string& password)
+{
+	m_password = password;
 }
 
 void User::SetUsername(const std::string& username)
