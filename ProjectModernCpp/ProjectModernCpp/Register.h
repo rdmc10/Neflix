@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QMessageBox>
+#include "User.h"
 #include <QMainWindow>
 #include "ui_Register.h"
 #include "ProjectModernCpp.h"
@@ -12,8 +14,13 @@ public:
 	Register(QWidget *parent = nullptr);
 	~Register();
 
+private:
+
+	User GetRegisterData();
+
 private slots:
 	void cancelButtonClicked();
+	void registerButtonClicked();
 
 private:
 	Ui::RegisterClass *registerWindow;

@@ -28,6 +28,7 @@ public:
 	void SetEmail(const std::string& email);
 	void SetBirthDate(const std::string& birthDate);
 
+
 private:
 	static uint32_t m_userNumber;
 	uint32_t m_userId;
