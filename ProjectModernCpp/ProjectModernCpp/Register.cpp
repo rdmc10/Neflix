@@ -30,16 +30,21 @@ User Register::GetRegisterData()
 	else
 		QMessageBox::warning(this, "Warning!", "Passwords don't match");
 		
+
 	return user;
 }
 
 void Register::registerButtonClicked()
 {
 	User user = GetRegisterData();
-	auto userStorage = createStorage("db.sqlite");
+	auto userStorage = createStorage("database.db");
 	userStorage.sync_schema();
-	
-	userStorage.insert(user);
+
+	auto id = userStorage.insert(user);
+	user.SetId(id);
+
+	QMessageBox::information(this, "Registered", "Account created successfully!");
+	cancelButtonClicked();
 }
 
 void Register::cancelButtonClicked() 

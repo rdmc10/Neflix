@@ -18,6 +18,6 @@ void ProjectModernCpp::registerButtonClicked()
 {
     Register *registerWindow = new Register();
     hide();
-    // TODO : free memory for current window 
+    // TODO : free memory for current window
     registerWindow->show();
 }

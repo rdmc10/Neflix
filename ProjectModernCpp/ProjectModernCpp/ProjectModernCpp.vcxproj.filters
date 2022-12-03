@@ -74,10 +74,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\Desktop\filme.csv">
+    <None Include="..\..\database.db">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\..\database.db">
+    <None Include="..\netflix_titles.csv">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
