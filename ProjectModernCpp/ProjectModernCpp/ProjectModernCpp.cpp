@@ -1,12 +1,11 @@
 #include "ProjectModernCpp.h"
-#include <iostream>
 
 ProjectModernCpp::ProjectModernCpp(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::ProjectModernCppClass)
 {
     ui->setupUi(this);
     connect(ui->buttonRegister, SIGNAL(clicked()), this, SLOT(registerButtonClicked()));
-    std::cout << "ok";
+    connect(ui->buttonLogin, SIGNAL(clicked()), this, SLOT(loginButtonClicked()));
 }
 
 ProjectModernCpp::~ProjectModernCpp()
@@ -20,4 +19,13 @@ void ProjectModernCpp::registerButtonClicked()
     hide();
     // TODO : free memory for current window
     registerWindow->show();
+}
+
+void ProjectModernCpp::loginButtonClicked()
+{   
+    // TODO : check if credentials are valid
+
+    LoginSuccessful* loginSuccessful = new LoginSuccessful(this);
+    hide();
+    loginSuccessful->show();
 }

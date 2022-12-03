@@ -96,6 +96,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LoginSuccessful.cpp" />
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="MovieCategory.cpp" />
     <ClCompile Include="Person.cpp" />
@@ -103,12 +104,14 @@
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="User.cpp" />
     <QtRcc Include="ProjectModernCpp.qrc" />
+    <QtUic Include="LoginSuccessful.ui" />
     <QtUic Include="ProjectModernCpp.ui" />
     <QtMoc Include="ProjectModernCpp.h" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="Register.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="LoginSuccessful.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieCategory.h" />
     <ClInclude Include="Person.h" />
