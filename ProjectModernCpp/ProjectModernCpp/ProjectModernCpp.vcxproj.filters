@@ -21,6 +21,12 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Header Files\GUI">
+      <UniqueIdentifier>{8b1f9843-b4df-4fd6-bbe4-7775c8f6008e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GUI">
+      <UniqueIdentifier>{c30b8be8-46a2-4db0-87ac-09a33119bb6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ProjectModernCpp.qrc">
@@ -29,15 +35,9 @@
     <QtUic Include="ProjectModernCpp.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="ProjectModernCpp.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ProjectModernCpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="User.cpp">
@@ -52,8 +52,11 @@
     <ClCompile Include="Movie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ProjectModernCpp.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
     <ClCompile Include="Register.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,10 +77,16 @@
     <None Include="..\..\..\..\..\Desktop\filme.csv">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\..\database.db">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="ProjectModernCpp.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
     <QtMoc Include="Register.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GUI</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

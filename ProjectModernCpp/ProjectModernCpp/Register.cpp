@@ -1,4 +1,6 @@
 #include "Register.h"
+#include <iostream>
+#include <string>
 
 Register::Register(QWidget *parent)
 	: QMainWindow(parent), registerWindow(new Ui::RegisterClass)
@@ -33,8 +35,11 @@ User Register::GetRegisterData()
 
 void Register::registerButtonClicked()
 {
-	User u = GetRegisterData();
-
+	User user = GetRegisterData();
+	auto userStorage = createStorage("db.sqlite");
+	userStorage.sync_schema();
+	
+	userStorage.insert(user);
 }
 
 void Register::cancelButtonClicked() 

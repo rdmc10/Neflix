@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 #include <cstdint>
+#include <sqlite_orm/sqlite_orm.h>
+
+namespace sql = sqlite_orm;
 
 class User
 {
@@ -13,11 +16,11 @@ public:
 	User& operator=(const User& user);
 
 	uint32_t GetID() const;
-	std::string GetPassword() const;
 	std::string GetUsername() const;
 	std::string GetFirstName() const;
 	std::string GetLastName() const;
 	std::string GetEmail() const;
+	std::string GetPassword() const;
 	std::string GetBirthdate() const;
 
 	void SetID(const uint32_t& id);
@@ -42,4 +45,21 @@ private:
 };
 
 
+inline auto createStorage(const std::string& filename)
+{
+	return sql::make_storage(
+		filename,
+		sql::make_table(
+			"users",
+			sql::make_column("id", &User::GetID, &User::SetID, sql::autoincrement(), sql::primary_key()),
+			sql::make_column("username", &User::GetUsername, &User::SetUsername),
+			sql::make_column("first_name", &User::GetFirstName, &User::SetFirstName),
+			sql::make_column("last_name", &User::GetLastName, &User::SetLastName),
+			sql::make_column("email", &User::GetEmail, &User::SetEmail),
+			sql::make_column("password", &User::GetPassword, &User::SetPassword),
+			sql::make_column("birthdate", &User::GetBirthdate, &User::SetBirthDate)
+		)
+	);
+}
 
+using UserCreateStorage = decltype(createStorage(""));
