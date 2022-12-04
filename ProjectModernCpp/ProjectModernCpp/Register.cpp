@@ -1,6 +1,7 @@
 #include "Register.h"
 #include <iostream>
 #include <string>
+#include "Movie.h"
 
 Register::Register(QWidget *parent)
 	: QMainWindow(parent), registerWindow(new Ui::RegisterClass)
@@ -44,6 +45,7 @@ void Register::registerButtonClicked()
 
 	auto id = userStorage.insert(user);
 	user.SetId(id);
+	Movie::PopulateMovies("netflix_titles.csv");
 
 	QMessageBox::information(this, "Registered", "Account created successfully!");
 	cancelButtonClicked();

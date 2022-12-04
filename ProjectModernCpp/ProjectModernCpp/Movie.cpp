@@ -1,11 +1,8 @@
 #pragma once
 #include "Movie.h"
 
-uint32_t Movie::m_movieNumber = 1;
-
 Movie::Movie()
-	:m_movieId(m_movieNumber++)
-	, m_type(Movie::Type::MOVIE)
+	: m_type(Movie::Type::MOVIE)
 	, m_name("")
 	, m_releaseDate(2022)
 	, m_duration(60)
@@ -15,7 +12,7 @@ Movie::Movie()
 
 Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<Person>& directors, const std::set<Person>& cast, const std::string& country,const std::string& dateAdded, uint16_t releaseDate, const std::string& rating, uint16_t duration,
 	const std::string& description)
-	: m_movieId(m_movieNumber++)
+	: m_movieId()
 	, m_type(type)
 	, m_name(name)
 	, m_directors(directors)
@@ -207,4 +204,44 @@ void Movie::AddCategory(const MovieCategory& category)
 bool Movie::operator<(const Movie& movie)
 {
 	return this->m_name < movie.m_name;
+}
+
+
+
+std::vector<std::string> split(const std::string& str, const std::string& delim)
+{
+	std::vector<std::string> result;
+	size_t startIndex = 0;
+
+	for (size_t found = str.find(delim); found != std::string::npos; found = str.find(delim, startIndex))
+	{
+		result.emplace_back(str.begin() + startIndex, str.begin() + found);
+		startIndex = found + delim.size();
+	}
+	if (startIndex != str.size())
+		result.emplace_back(str.begin() + startIndex, str.end());
+	return result;
+}
+
+void Movie::PopulateMovies (const std::string& csvPath)
+{
+	std::ifstream in(csvPath);
+
+	auto movieStorage = createMovieStorage("database.db");
+	std::string str;
+
+	const std::string delim{ "," };
+	//std::vector<Movie> books;
+
+	while (getline(in, str))
+	{
+		//TODO: Repair split function
+		//Id,Title,Category,Price,Price_After_Tax,Tax_amount,Avilability,Number_of_reviews,Book_Description,Image_Link,Stars
+		std::vector<std::string> result = split(str, delim);
+
+		//books.emplace_back(Movie{ -1, result[1], result[2], result[3], result[result.size() - 1] });
+
+	}
+
+	//movieStorage.insert_range(books.begin(), books.end());
 }
