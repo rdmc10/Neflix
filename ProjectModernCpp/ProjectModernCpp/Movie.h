@@ -18,7 +18,7 @@ public:
 public:
 
 	Movie();
-	Movie(uint32_t id, const Type& type, const std::set<Person>& cast, uint16_t releaseDate, const std::string& rating,
+	Movie(uint32_t id, const Type& type, const std::set<Person>& cast,const std::string& country, uint16_t releaseDate, const std::string& rating,
 		 uint16_t duration, /*CATEGORIES*/ const std::string& description);
 	Movie(const Movie& movie);
 	Movie(Movie&& movie);
@@ -30,6 +30,7 @@ public:
 	Type GetMovieType() const;
 	std::string GetName() const;
 	std::set<Person> GetCast() const;
+	std::string GetCountry() const;
 	uint16_t GetReleaseDate() const;
 	std::string GetRating() const;
 	uint16_t GetDuration() const;
@@ -40,7 +41,8 @@ public:
 	void SetType(const Type& type);
 	void SetName(const std::string& name);
 	void SetCast(const std::set<Person>& cast);
-	void SetReleaseDate(const uint16_t& releaseDate);
+	void SetCountry(const std::string& country);
+	void SetReleaseDate(uint16_t releaseDate);
 	void SetRating(const std::string& rating);
 	void SetDuration(const uint16_t& duration);
 	// Setter for categories
@@ -57,6 +59,7 @@ private:
 	Type m_type;
 	std::string m_name;
 	std::set<Person> m_cast;
+	std::string m_country;
 	uint16_t m_releaseDate;
 	std::string m_rating;
 	uint16_t m_duration;
