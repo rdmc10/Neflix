@@ -38,6 +38,8 @@ void Register::registerButtonClicked()
 {
 	User user = GetRegisterData();
 	auto userStorage = createStorage("database.db");
+	auto movieStorage = createMovieStorage("database.db");
+	// TODO: Move movieStorage to another window and populate it. 
 	userStorage.sync_schema();
 
 	auto id = userStorage.insert(user);

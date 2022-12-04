@@ -2,6 +2,7 @@
 
 #include <QMessageBox>
 #include "User.h"
+#include "Movie.h"
 #include <QMainWindow>
 #include "ui_Register.h"
 #include "ProjectModernCpp.h"

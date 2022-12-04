@@ -4,7 +4,11 @@
 #include <cstdint>
 #include <string>
 #include <vector>
+#include <sqlite_orm/sqlite_orm.h>
+
 //#include <unordered_set>
+
+namespace sql = sqlite_orm;
 
 class Movie {
 
@@ -56,6 +60,8 @@ public:
 
 	bool operator<(const Movie& movie);
 
+	friend inline auto createMovieStorage(const std::string& filename);
+
 private:
 
 	static uint32_t m_movieNumber;
@@ -73,4 +79,29 @@ private:
 	std::string m_description;
 
 };
+
+
+inline auto createMovieStorage(const std::string& filename)
+{
+	return sql::make_storage(
+		filename,
+		sql::make_table(
+			"movies",
+			sql::make_column("id", &Movie::m_movieId, sql::autoincrement(), sql::primary_key()),
+			sql::make_column("type", &Movie::m_type),
+			sql::make_column("name", &Movie::m_name),
+			sql::make_column("directors", &Movie::m_directors),
+			sql::make_column("cast", &Movie::m_cast),
+			sql::make_column("country", &Movie::m_country),
+			sql::make_column("date_added", &Movie::m_dateAdded),
+			sql::make_column("release_date", &Movie::m_releaseDate),
+			sql::make_column("rating", &Movie::m_rating),
+			sql::make_column("duration", &Movie::m_duration),
+			sql::make_column("description", &Movie::m_description)
+
+		)
+	);
+}
+
+using MovieDatabase = decltype(createMovieStorage(""));
 
