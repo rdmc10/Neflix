@@ -6,16 +6,19 @@ uint32_t Movie::m_movieNumber = 1;
 Movie::Movie()
 	:m_movieId(m_movieNumber++)
 	, m_type(Movie::Type::MOVIE)
+	, m_name("")
 	, m_releaseDate(2022)
 	, m_duration(60)
 	, m_description("No description available.")
 {
 }
 
-Movie::Movie(uint32_t id, const Type& type, const std::set<Person>& cast, const std::string& country, uint16_t releaseDate, const std::string& rating, uint16_t duration,
+Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<Person>& directors, const std::set<Person>& cast, const std::string& country, uint16_t releaseDate, const std::string& rating, uint16_t duration,
 	const std::string& description)
 	: m_movieId(m_movieNumber++)
 	, m_type(type)
+	, m_name(name)
+	, m_directors(directors)
 	, m_cast(cast)
 	, m_country(country)
 	, m_releaseDate(releaseDate)
@@ -28,6 +31,8 @@ Movie::Movie(uint32_t id, const Type& type, const std::set<Person>& cast, const 
 Movie::Movie(const Movie& movie)
 	:m_movieId(movie.m_movieId)
 	, m_type(movie.m_type)
+	, m_name(movie.m_name)
+	, m_directors(movie.m_directors)
 	, m_cast(movie.m_cast)
 	, m_country(movie.m_country)
 	, m_releaseDate(movie.m_releaseDate)
@@ -46,6 +51,8 @@ Movie& Movie::operator=(Movie&& movie)
 {
 	m_movieId = movie.GetMovieID();
 	m_type = movie.GetMovieType();
+	m_name = movie.GetName();
+	m_directors = movie.GetDirectors();
 	m_cast = movie.GetCast();
 	m_country = movie.GetCountry();
 	m_releaseDate = movie.GetReleaseDate();
@@ -61,6 +68,8 @@ Movie& Movie::operator=(const Movie& movie)
 {
 	m_movieId = movie.GetMovieID();
 	m_type = movie.GetMovieType();
+	m_name = movie.GetName();
+	m_directors = movie.GetDirectors();
 	m_cast = movie.GetCast();
 	m_country = movie.GetCountry();
 	m_releaseDate = movie.GetReleaseDate();
@@ -84,6 +93,11 @@ Movie::Type Movie::GetMovieType() const
 std::string Movie::GetName() const
 {
 	return m_name;
+}
+
+std::vector<Person> Movie::GetDirectors() const
+{
+	return m_directors;
 }
 
 std::set<Person> Movie::GetCast() const
@@ -134,6 +148,11 @@ void Movie::SetType(const Type& type)
 void Movie::SetName(const std::string& name)
 {
 	m_name = name;
+}
+
+void Movie::SetDirectors(const std::vector<Person>& directors)
+{
+	m_directors = directors;
 }
 
 void Movie::SetCast(const std::set<Person>& cast)
