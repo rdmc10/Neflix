@@ -40,7 +40,7 @@
      <string>Register</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -121,10 +121,18 @@
         <widget class="QDateEdit" name="fieldBirthdate"/>
        </item>
        <item>
-        <widget class="QLineEdit" name="fieldPassword"/>
+        <widget class="QLineEdit" name="fieldPassword">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="fieldConfirmPassword"/>
+        <widget class="QLineEdit" name="fieldConfirmPassword">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -137,7 +145,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

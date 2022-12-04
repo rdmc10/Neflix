@@ -18,8 +18,8 @@ public:
 public:
 
 	Movie();
-	Movie(const uint32_t& id, const Type& type, const std::set<Person>& cast, const uint16_t releaseDate, const uint16_t duration,
-		/*CATEGORIES*/ std::string description);
+	Movie(uint32_t id, const Type& type, const std::set<Person>& cast, uint16_t releaseDate, const std::string& rating,
+		 uint16_t duration, /*CATEGORIES*/ const std::string& description);
 	Movie(const Movie& movie);
 	Movie(Movie&& movie);
 
@@ -31,6 +31,7 @@ public:
 	std::string GetName() const;
 	std::set<Person> GetCast() const;
 	uint16_t GetReleaseDate() const;
+	std::string GetRating() const;
 	uint16_t GetDuration() const;
 	std::vector<MovieCategory> GetCategories() const;
 	std::string GetDescription() const;
@@ -40,6 +41,7 @@ public:
 	void SetName(const std::string& name);
 	void SetCast(const std::set<Person>& cast);
 	void SetReleaseDate(const uint16_t& releaseDate);
+	void SetRating(const std::string& rating);
 	void SetDuration(const uint16_t& duration);
 	// Setter for categories
 	void SetDescription(const std::string& description);
@@ -56,6 +58,7 @@ private:
 	std::string m_name;
 	std::set<Person> m_cast;
 	uint16_t m_releaseDate;
+	std::string m_rating;
 	uint16_t m_duration;
 	std::vector<MovieCategory> m_categories; // TODO: replace vector with unordered_set
 	std::string m_description;
