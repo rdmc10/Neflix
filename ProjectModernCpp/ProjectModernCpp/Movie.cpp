@@ -13,7 +13,7 @@ Movie::Movie()
 {
 }
 
-Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<Person>& directors, const std::set<Person>& cast, const std::string& country, uint16_t releaseDate, const std::string& rating, uint16_t duration,
+Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<Person>& directors, const std::set<Person>& cast, const std::string& country,const std::string& dateAdded, uint16_t releaseDate, const std::string& rating, uint16_t duration,
 	const std::string& description)
 	: m_movieId(m_movieNumber++)
 	, m_type(type)
@@ -21,6 +21,7 @@ Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::
 	, m_directors(directors)
 	, m_cast(cast)
 	, m_country(country)
+	, m_dateAdded(dateAdded)
 	, m_releaseDate(releaseDate)
 	, m_rating(rating)
 	, m_duration(duration)
@@ -35,6 +36,7 @@ Movie::Movie(const Movie& movie)
 	, m_directors(movie.m_directors)
 	, m_cast(movie.m_cast)
 	, m_country(movie.m_country)
+	, m_dateAdded(movie.m_dateAdded)
 	, m_releaseDate(movie.m_releaseDate)
 	, m_rating(movie.m_rating)
 	, m_duration(movie.m_duration)
@@ -55,6 +57,7 @@ Movie& Movie::operator=(Movie&& movie)
 	m_directors = movie.GetDirectors();
 	m_cast = movie.GetCast();
 	m_country = movie.GetCountry();
+	m_dateAdded = movie.GetDateAdded();
 	m_releaseDate = movie.GetReleaseDate();
 	m_rating = movie.GetRating();
 	m_duration = movie.GetDuration();
@@ -72,6 +75,7 @@ Movie& Movie::operator=(const Movie& movie)
 	m_directors = movie.GetDirectors();
 	m_cast = movie.GetCast();
 	m_country = movie.GetCountry();
+	m_dateAdded = movie.GetDateAdded();
 	m_releaseDate = movie.GetReleaseDate();
 	m_rating = movie.GetRating();
 	m_duration = movie.GetDuration();
@@ -108,6 +112,11 @@ std::set<Person> Movie::GetCast() const
 std::string Movie::GetCountry() const
 {
 	return m_country;
+}
+
+std::string Movie::GetDateAdded() const
+{
+	return m_dateAdded;
 }
 
 uint16_t Movie::GetReleaseDate() const
@@ -163,6 +172,11 @@ void Movie::SetCast(const std::set<Person>& cast)
 void Movie::SetCountry(const std::string& country)
 {
 	m_country = country;
+}
+
+void Movie::SetDateAdded(const std::string& dateAdded)
+{
+	m_dateAdded = dateAdded;
 }
 
 void Movie::SetReleaseDate(uint16_t releaseDate)
