@@ -32,6 +32,7 @@ public:
 	void SetBirthDate(const std::string& birthDate);
 
 	friend inline auto createStorage(const std::string& filename);
+	friend inline User getUserFromStorage(std::string username);
 
 
 private:
@@ -62,6 +63,26 @@ inline auto createStorage(const std::string& filename)
 			sql::make_column("birthdate", &User::m_birthDate)
 		)
 	);
+}
+
+inline User getUserFromStorage(std::string username) {
+
+	using namespace sqlite_orm;
+	auto m_db = createStorage("database.db");
+
+	User user;
+
+	auto userFromDatabase = m_db.select(sql::columns(&User::m_username, &User::m_password, &User::m_birthDate, &User::m_email, &User::m_firstName, &User::m_lastName, &User::m_userId)
+		, sql::where(c(&User::m_username) == username));
+
+
+	if (userFromDatabase.size() != 0) {
+		user.SetUsername(std::get<0>(userFromDatabase.at(0)));
+		user.SetPassword(std::get<1>(userFromDatabase.at(0)));
+	}
+		
+	return user;
+
 }
 
 using Database = decltype(createStorage(""));

@@ -23,9 +23,18 @@ void ProjectModernCpp::registerButtonClicked()
 
 void ProjectModernCpp::loginButtonClicked()
 {   
-    // TODO : check if credentials are valid
+    
+    QString username = ui->inputUsername->text();
+    QString password = ui->inputPassword->text();
 
-    LoginSuccessful* loginSuccessful = new LoginSuccessful(this);
-    hide();
-    loginSuccessful->show();
+    User user = getUserFromStorage(username.toStdString());
+
+    if (user.GetPassword() == password.toStdString() && user.GetUsername() == username.toStdString()) {
+        LoginSuccessful* loginSuccessful = new LoginSuccessful(this);
+        hide();
+        loginSuccessful->show();
+    }
+    else {
+        QMessageBox::warning(this, "Warning!", "Username doesn't exist or password is incorrect!");
+    }
 }
