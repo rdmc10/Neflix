@@ -39,16 +39,18 @@ void Register::registerButtonClicked()
 {
 	User user = GetRegisterData();
 	auto userStorage = createStorage("database.db");
-	auto movieStorage = createMovieStorage("database.db");
-	// TODO: Move movieStorage to another window and populate it. 
 	userStorage.sync_schema();
+	User userFromDatabase = getUserFromStorage(user.GetUsername());
 
-	auto id = userStorage.insert(user);
-	user.SetId(id);
-	Movie::PopulateMovies("netflix_titles.csv");
-
-	QMessageBox::information(this, "Registered", "Account created successfully!");
-	cancelButtonClicked();
+	if (userFromDatabase.GetUsername() != user.GetUsername()) {
+		auto id = userStorage.insert(user);
+		user.SetId(id);
+		QMessageBox::information(this, "Registered", "Account created successfully!");
+		cancelButtonClicked();
+	}
+	else {
+		QMessageBox::warning(this, "Warning", "An account with this username already exists!");
+	}
 }
 
 void Register::cancelButtonClicked() 
