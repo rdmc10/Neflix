@@ -104,6 +104,7 @@
     <ClCompile Include="ProjectModernCpp.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserPreferences.cpp" />
     <QtRcc Include="ProjectModernCpp.qrc" />
     <QtUic Include="LoginSuccessful.ui" />
     <QtUic Include="ProjectModernCpp.ui" />
@@ -112,6 +113,7 @@
     <QtUic Include="Register.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="UserPreferences.h" />
     <QtMoc Include="LoginSuccessful.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="Movie.h" />

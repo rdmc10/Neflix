@@ -1,4 +1,5 @@
 #include "Database.h"
+#include <qmainwindow.h>
 
 void database::CSVReadLine(std::vector<std::string>& movieColumns, const std::string& line) {
     std::stringstream lstr(line);
@@ -32,7 +33,7 @@ void database::CSVReadFile(const std::string& csvPath)
         std::vector<std::string> movieColumns;
         CSVReadLine(movieColumns, line);
         for (int i = 0; i < movieColumns.size(); i++)
-            std::cout << movieColumns[i] << "---------";
-        std::cout << "\n";
+            qDebug() << QString::fromStdString(movieColumns[i]) << "---------";
+        qDebug() << "\n";
     }
 }

@@ -32,9 +32,9 @@ namespace sql = sqlite_orm;
 class database
 {
 public:
-	void CSVReadFile(const std::string& csvPath);
+	static void CSVReadFile(const std::string& csvPath);
 
 private:
-	void CSVReadLine(std::vector<std::string>& movieColumns, const std::string& line);
+	static void CSVReadLine(std::vector<std::string>& movieColumns, const std::string& line);
 };
 
