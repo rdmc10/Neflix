@@ -5,9 +5,9 @@ class UserPreferences
 {
 public:
 	UserPreferences();
-	void AddMovieLiked();
-	void AddCategoryLiked();
-	void AddActorLiked();
+	void AddMovieLiked(const Movie& movie);
+	void AddCategoryLiked(const MovieCategory& movieCategory);
+	void AddActorLiked(const Person& actor);
 	std::vector<Movie> GetMoviesLiked();
 	std::vector<MovieCategory> GetCategoriesLiked();
 	std::vector<Person> GetPersonLiked();
