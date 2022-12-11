@@ -1,16 +1,16 @@
 #include "Database.h"
 
-void database::CSVReadLine(std::vector<std::string> movieColumns, std::string line) {
-    std::stringstream str(line);
+void database::CSVReadLine(std::vector<std::string>& movieColumns, const std::string& line) {
+    std::stringstream lstr(line);
     std::string word;
-    while (std::getline(str, word, ','))
+    while (std::getline(lstr, word, ','))
     {
         if (word[0] == '"')
         {
             std::string tmp = word;
             while (word[word.size() - 1] != '"')
             {
-                std::getline(str, word, ',');
+                std::getline(lstr, word, ',');
                 tmp += ",";
                 tmp += word;
             }
@@ -20,7 +20,7 @@ void database::CSVReadLine(std::vector<std::string> movieColumns, std::string li
     }
 }
 
-void database::CSVReadFile(std::string csvPath)
+void database::CSVReadFile(const std::string& csvPath)
 {
     std::ifstream csvFile(csvPath);
     std::string line;
