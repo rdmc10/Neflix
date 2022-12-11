@@ -7,14 +7,14 @@ void database::CSVReadLine(std::vector<std::string> movieColumns, std::string li
     {
         if (word[0] == '"')
         {
-            std::string titleAux = word;
+            std::string tmp = word;
             while (word[word.size() - 1] != '"')
             {
                 std::getline(str, word, ',');
-                titleAux += ",";
-                titleAux += word;
+                tmp += ",";
+                tmp += word;
             }
-            movieColumns.push_back(titleAux);
+            movieColumns.push_back(tmp);
         }
         else movieColumns.push_back(word);
     }

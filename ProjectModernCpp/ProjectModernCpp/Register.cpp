@@ -42,15 +42,21 @@ void Register::registerButtonClicked()
 	userStorage.sync_schema();
 	User userFromDatabase = getUserFromStorage(user.GetUsername());
 
-	if (userFromDatabase.GetUsername() != user.GetUsername()) {
+	bool newUser = false;
+	if (userFromDatabase.GetUsername() != user.GetUsername() && userFromDatabase.GetEmail() != user.GetEmail()) {
+			newUser = true;
+	}
+	
+	if (newUser) {
 		auto id = userStorage.insert(user);
 		user.SetId(id);
 		QMessageBox::information(this, "Registered", "Account created successfully!");
 		cancelButtonClicked();
 	}
 	else {
-		QMessageBox::warning(this, "Warning", "An account with this username already exists!");
+		QMessageBox::warning(this, "Warning", "An account with this username or email already exists!");
 	}
+
 }
 
 void Register::cancelButtonClicked() 

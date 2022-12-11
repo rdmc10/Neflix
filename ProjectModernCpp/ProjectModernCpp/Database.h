@@ -8,7 +8,9 @@
 class database
 {
 public:
-	void CSVReadLine(std::vector<std::string> movieColumns, std::string line);
 	void CSVReadFile(std::string csvPath);
+
+private:
+	void CSVReadLine(std::vector<std::string> movieColumns, std::string line);
 };
 
