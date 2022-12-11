@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QMainWindow>
-#include "User.h"
 #include "Movie.h"
 #include "ui_LoginSuccessful.h"
 

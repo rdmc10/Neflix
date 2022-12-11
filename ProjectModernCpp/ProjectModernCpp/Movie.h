@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 #include <sqlite_orm/sqlite_orm.h>
-#include <QMainWindow>
 #include <fstream>
 
 //#include <unordered_set>
@@ -63,7 +62,6 @@ public:
 	bool operator<(const Movie& movie);
 
 	friend inline auto createMovieStorage(const std::string& filename);
-	static void PopulateMovies(const std::string& csvPath);
 
 private:
 
