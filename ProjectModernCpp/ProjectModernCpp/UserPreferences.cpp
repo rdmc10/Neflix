@@ -19,3 +19,18 @@ void UserPreferences::AddActorLiked(const Person& actor)
 	this->m_actorsLiked.push_back(actor);
 }
 
+std::vector<Movie> UserPreferences::GetMoviesLiked()
+{
+	return this->m_moviesLiked;
+}
+
+std::vector<MovieCategory> UserPreferences::GetCategoriesLiked()
+{
+	return this->m_categoriesLiked;
+}
+
+std::vector<Person> UserPreferences::GetPersonLiked()
+{
+	return this->m_actorsLiked;
+}
+
