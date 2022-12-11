@@ -96,6 +96,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Database.cpp" />
     <ClCompile Include="LoginSuccessful.cpp" />
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="MovieCategory.cpp" />
@@ -112,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginSuccessful.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="MovieCategory.h" />
     <ClInclude Include="Person.h" />
