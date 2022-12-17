@@ -1,39 +1,68 @@
 #include "Database.h"
 #include <qmainwindow.h>
 
-void database::CSVReadLine(std::vector<std::string>& movieColumns, const std::string& line) {
-    std::stringstream lstr(line);
-    std::string word;
-    while (std::getline(lstr, word, ','))
-    {
-        if (word[0] == '"')
-        {
-            std::string tmp = word;
-            while (word[word.size() - 1] != '"')
-            {
-                std::getline(lstr, word, ',');
-                tmp += ",";
-                tmp += word;
+enum class CSVState {
+    UnquotedField,
+    QuotedField,
+    QuotedQuote
+};
+
+std::vector<std::string> database::readCSVRow(const std::string& row) {
+    CSVState state = CSVState::UnquotedField;
+    std::vector<std::string> fields{ "" };
+    size_t i = 0; 
+    for (char c : row) {
+        switch (state) {
+        case CSVState::UnquotedField:
+            switch (c) {
+            case ',': 
+                fields.push_back(""); i++;
+                break;
+            case '"': state = CSVState::QuotedField;
+                break;
+            default:  fields[i].push_back(c);
+                break;
             }
-            movieColumns.push_back(tmp);
+            break;
+        case CSVState::QuotedField:
+            switch (c) {
+            case '"': state = CSVState::QuotedQuote;
+                break;
+            default:  fields[i].push_back(c);
+                break;
+            }
+            break;
+        case CSVState::QuotedQuote:
+            switch (c) {
+            case ',': 
+                fields.push_back(""); i++;
+                state = CSVState::UnquotedField;
+                break;
+            case '"': 
+                fields[i].push_back('"');
+                state = CSVState::QuotedField;
+                break;
+            default:  
+                state = CSVState::UnquotedField;
+                break;
+            }
+            break;
         }
-        else movieColumns.push_back(word);
     }
+    return fields;
 }
 
-void database::CSVReadFile(const std::string& csvPath)
-{
-    std::ifstream csvFile(csvPath);
-    std::string line;
-
-    std::getline(csvFile, line);
-
-    while (std::getline(csvFile, line))
-    {
-        std::vector<std::string> movieColumns;
-        CSVReadLine(movieColumns, line);
-        for (int i = 0; i < movieColumns.size(); i++)
-            qDebug() << QString::fromStdString(movieColumns[i]) << "---------";
-        qDebug() << "\n";
+std::vector<std::vector<std::string>> database::readCSV(const std::string& csvPath) {
+    std::ifstream in(csvPath);
+    std::vector<std::vector<std::string>> table;
+    std::string row;
+    while (!in.eof()) {
+        std::getline(in, row);
+        if (in.bad() || in.fail()) {
+            break;
+        }
+        auto fields = readCSVRow(row);
+        table.push_back(fields);
     }
+    return table;
 }
