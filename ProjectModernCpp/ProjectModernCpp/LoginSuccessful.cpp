@@ -1,5 +1,6 @@
 #include "LoginSuccessful.h"
 #include "CSVMovie.h"
+#include "Movie.h"
 #include "Database.h"
 
 LoginSuccessful::LoginSuccessful(QWidget* parent)

@@ -35,3 +35,28 @@ struct CSVMovie {
 
 
 };
+
+inline auto createMovieStorage(const std::string& filename)
+{
+	return sql::make_storage(
+		filename,
+		sql::make_table(
+			"movies",
+			sql::make_column("id", &CSVMovie::m_movieId, sql::autoincrement(), sql::primary_key()),
+			sql::make_column("type", &CSVMovie::m_type),
+			sql::make_column("name", &CSVMovie::m_name),
+			sql::make_column("directors", &CSVMovie::m_directors),
+			sql::make_column("cast", &CSVMovie::m_cast),
+			sql::make_column("country", &CSVMovie::m_country),
+			sql::make_column("date_added", &CSVMovie::m_dateAdded),
+			sql::make_column("release_date", &CSVMovie::m_releaseDate),
+			sql::make_column("rating", &CSVMovie::m_rating),
+			sql::make_column("duration", &CSVMovie::m_duration),
+			sql::make_column("categories", &CSVMovie::m_categories),
+			sql::make_column("description", &CSVMovie::m_description)
+
+		)
+	);
+}
+
+using MovieDatabase = decltype(createMovieStorage(""));
