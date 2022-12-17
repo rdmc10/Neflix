@@ -6,6 +6,7 @@ LoginSuccessful::LoginSuccessful(QWidget* parent)
 {
 	loggedInPage->setupUi(this);
 	database::readCSV("./netflix_titles.csv");
+
 }
 
 LoginSuccessful::~LoginSuccessful()

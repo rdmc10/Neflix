@@ -87,6 +87,9 @@
     <ClInclude Include="UserPreferences.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CSVMovie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\database.db">

@@ -113,6 +113,7 @@
     <QtUic Include="Register.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CSVMovie.h" />
     <ClInclude Include="UserPreferences.h" />
     <QtMoc Include="LoginSuccessful.h" />
     <ClInclude Include="Database.h" />
