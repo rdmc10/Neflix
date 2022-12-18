@@ -54,7 +54,11 @@ std::vector<std::string> database::readCSVRow(const std::string& row) {
 
 void database::PopulateStorage(std::vector<CSVMovie> movies)
 {
-    m_db.insert_range(movies.begin(), movies.end());
+    // m_db.insert_range(movies.begin(), movies.end());
+    for (auto& movie : movies) {
+        auto id = m_db.insert(movie);
+        movie.m_movieId = id;
+    }
 }
 
 int database::GetMovieCount()

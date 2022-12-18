@@ -15,5 +15,4 @@ public:
 
 private:
 	Ui::LoginSuccessfulClass *loggedInPage;
-	database db;
 };

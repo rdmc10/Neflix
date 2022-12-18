@@ -4,6 +4,8 @@
 #include "ui_ProjectModernCpp.h"
 #include "Register.h"
 #include "LoginSuccessful.h"
+#include "Database.h"
+#include "CSVMovie.h"
 
 class ProjectModernCpp : public QMainWindow
 {
@@ -19,4 +21,5 @@ private slots:
 
 private:
     Ui::ProjectModernCppClass *ui;
+    database db;
 };
