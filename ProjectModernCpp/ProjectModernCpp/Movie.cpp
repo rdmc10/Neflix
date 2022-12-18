@@ -11,7 +11,7 @@ Movie::Movie()
 }
 
 Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<Person>& directors, const std::set<Person>& cast, const std::string& country,const std::string& dateAdded, uint16_t releaseDate, const std::string& rating, uint16_t duration,
-	const std::string& description)
+	const std::vector<std::string>& categories, const std::string& description)
 	: m_movieId()
 	, m_type(type)
 	, m_name(name)
@@ -22,6 +22,7 @@ Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::
 	, m_releaseDate(releaseDate)
 	, m_rating(rating)
 	, m_duration(duration)
+	, m_categories(categories)
 	, m_description(description)
 {
 }
@@ -191,14 +192,14 @@ void Movie::SetDuration(const uint16_t& duration)
 	m_duration = duration;
 }
 
+void Movie::SetCategories(const std::vector<std::string>& categories)
+{
+	m_categories = categories;
+}
+
 void Movie::SetDescription(const std::string& description)
 {
 	m_description = description;
-}
-
-void Movie::AddCategory(const MovieCategory& category)
-{
-	m_categories.push_back(category);
 }
 
 bool Movie::operator<(const Movie& movie)
