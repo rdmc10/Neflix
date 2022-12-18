@@ -54,10 +54,18 @@ std::vector<std::string> database::readCSVRow(const std::string& row) {
 
 void database::PopulateStorage(std::vector<CSVMovie> movies)
 {
-    // m_db.insert_range(movies.begin(), movies.end());
     for (auto& movie : movies) {
         auto id = m_db.insert(movie);
         movie.m_movieId = id;
+    }
+}
+
+std::vector<Movie> database::GetMoviesData()
+{
+    auto results = m_db.select(&CSVMovie::m_movieId, &CSVMovie::m_type, &CSVMovie::m_name, &CSVMovie::m_directors, &CSVMovie::m_cast, &CSVMovie::m_country, &CSVMovie::m_dateAdded, &CSVMovie::m_releaseDate, &CSVMovie::m_rating, &CSVMovie::m_duration, &CSVMovie::m_categories, &CSVMovie::m_description);
+    std::vector<Movie> moviesData;
+    for (const auto& row : results) {
+        // TODO : process database data and convert to std::vector<Movie>
     }
 }
 

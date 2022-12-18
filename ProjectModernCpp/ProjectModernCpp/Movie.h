@@ -23,7 +23,7 @@ public:
 public:
 
 	Movie();
-	Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<Person>& directors, const std::set<Person>& cast,const std::string& country,const std::string& dateAdded, uint16_t releaseDate, const std::string& rating,
+	Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<Person>& directors, const std::set<Person>& cast,const std::string& country, const std::string& dateAdded, uint16_t releaseDate, const std::string& rating,
 		 uint16_t duration, const std::vector<std::string>& categories, const std::string& description);
 	Movie(const Movie& movie);
 	Movie(Movie&& movie);

@@ -7,6 +7,7 @@
 #include <sqlite_orm/sqlite_orm.h>
 #include "User.h"
 #include "CSVMovie.h"
+#include "Movie.h"
 
 namespace sql = sqlite_orm;
 
@@ -21,6 +22,7 @@ public:
 	std::vector<std::string> readCSVRow(const std::string& row);
 
 	void PopulateStorage(std::vector<CSVMovie> movies);
+	std::vector<Movie> GetMoviesData();
 	int GetMovieCount();
 };
 

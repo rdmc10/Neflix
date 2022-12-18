@@ -6,6 +6,7 @@
 #include "LoginSuccessful.h"
 #include "Database.h"
 #include "CSVMovie.h"
+#include "Movie.h"
 
 class ProjectModernCpp : public QMainWindow
 {
