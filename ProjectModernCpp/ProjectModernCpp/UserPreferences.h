@@ -6,6 +6,10 @@ class UserPreferences
 {
 public:
 	UserPreferences();
+	UserPreferences(const UserPreferences& userPreferences);
+
+	UserPreferences& operator=(const UserPreferences& userPreferences);
+
 	void AddMovieLiked(const Movie& movie);
 	void AddCategoryLiked(const MovieCategory& movieCategory);
 	void AddActorLiked(const Person& actor);

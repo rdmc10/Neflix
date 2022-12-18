@@ -4,6 +4,22 @@ UserPreferences::UserPreferences()
 {
 }
 
+UserPreferences::UserPreferences(const UserPreferences& userPreferences) 
+	: m_moviesLiked(userPreferences.m_moviesLiked)
+	, m_categoriesLiked(userPreferences.m_categoriesLiked)
+	, m_actorsLiked(userPreferences.m_actorsLiked)
+{
+}
+
+UserPreferences& UserPreferences::operator=(const UserPreferences& userPreferences)
+{
+	m_moviesLiked = userPreferences.m_moviesLiked;
+	m_categoriesLiked = userPreferences.m_categoriesLiked;
+	m_actorsLiked = userPreferences.m_actorsLiked;
+
+	return *this;
+}
+
 void UserPreferences::AddMovieLiked(const Movie& movie)
 {
 	this->m_moviesLiked.push_back(movie);
