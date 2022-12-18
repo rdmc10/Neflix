@@ -52,6 +52,17 @@ std::vector<std::string> database::readCSVRow(const std::string& row) {
     return fields;
 }
 
+void database::PopulateStorage(std::vector<CSVMovie> movies)
+{
+    m_db.insert_range(movies.begin(), movies.end());
+}
+
+int database::GetMovieCount()
+{
+    auto movieCount = m_db.count<CSVMovie>();
+    return movieCount;
+}
+
 std::vector<std::vector<std::string>> database::readCSV(const std::string& csvPath) {
     std::ifstream in(csvPath);
     std::vector<std::vector<std::string>> table;

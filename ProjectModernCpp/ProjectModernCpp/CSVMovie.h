@@ -1,5 +1,9 @@
+#pragma once
+
 #include <string>
 #include <cstdint>
+
+namespace sql = sqlite_orm;
 
 struct CSVMovie {
 

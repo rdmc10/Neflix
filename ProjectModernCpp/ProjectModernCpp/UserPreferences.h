@@ -1,6 +1,7 @@
 #pragma once
 #include "Person.h"
 #include "Movie.h"
+#include "CSVMovie.h"
 class UserPreferences
 {
 public:

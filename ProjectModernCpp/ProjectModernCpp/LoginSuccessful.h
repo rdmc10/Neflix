@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
+#include "Database.h"
 #include "Movie.h"
 #include "ui_LoginSuccessful.h"
 
@@ -14,5 +15,5 @@ public:
 
 private:
 	Ui::LoginSuccessfulClass *loggedInPage;
-	MovieDatabase movieStorage = createMovieStorage("database.db");
+	database db;
 };
