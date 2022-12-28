@@ -10,7 +10,7 @@ Movie::Movie()
 {
 }
 
-Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<Person>& directors, const std::set<Person>& cast, const std::string& country,const std::string& dateAdded, uint16_t releaseDate, const std::string& rating, uint16_t duration,
+Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<std::string>& directors, const std::vector<std::string>& cast, const std::string& country,const std::string& dateAdded, uint16_t releaseDate, const std::string& rating, uint16_t duration,
 	const std::vector<std::string>& categories, const std::string& description)
 	: m_movieId()
 	, m_type(type)
@@ -97,12 +97,12 @@ std::string Movie::GetName() const
 	return m_name;
 }
 
-std::vector<Person> Movie::GetDirectors() const
+std::vector<std::string> Movie::GetDirectors() const
 {
 	return m_directors;
 }
 
-std::set<Person> Movie::GetCast() const
+std::vector<std::string> Movie::GetCast() const
 {
 	return m_cast;
 }
@@ -132,7 +132,7 @@ uint16_t Movie::GetDuration() const
 	return m_duration;
 }
 
-std::vector<MovieCategory> Movie::GetCategories() const
+std::vector<std::string> Movie::GetCategories() const
 {
 	return m_categories;
 }

@@ -37,6 +37,7 @@ struct CSVMovie {
 		m_description(description)
 	{};
 
+	CSVMovie() = default;
 
 };
 

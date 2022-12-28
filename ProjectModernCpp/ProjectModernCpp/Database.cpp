@@ -1,4 +1,5 @@
 #include "Database.h"
+#include "ParseUtil.h"
 #include <qmainwindow.h>
 
 enum class CSVState {
@@ -60,13 +61,24 @@ void database::PopulateStorage(std::vector<CSVMovie> movies)
     }
 }
 
-std::vector<Movie> database::GetMoviesData()
+void database::GetMoviesData()
 {
-    auto results = m_db.select(&CSVMovie::m_movieId, &CSVMovie::m_type, &CSVMovie::m_name, &CSVMovie::m_directors, &CSVMovie::m_cast, &CSVMovie::m_country, &CSVMovie::m_dateAdded, &CSVMovie::m_releaseDate, &CSVMovie::m_rating, &CSVMovie::m_duration, &CSVMovie::m_categories, &CSVMovie::m_description);
+    auto csvmovies = m_db.get_all<CSVMovie>();
     std::vector<Movie> moviesData;
-    for (const auto& row : results) {
-        // TODO : process database data and convert to std::vector<Movie>
+    for (const auto& csvmovie : csvmovies) {
+        Movie tmp;
+        tmp.SetID(csvmovie.m_movieId);
+        tmp.SetType(csvmovie.m_type == "Movie" ? Movie::Type::Movie : Movie::Type::Show);
+        tmp.SetName(csvmovie.m_name);
+        tmp.SetDirectors(ParseString(csvmovie.m_directors));
+        tmp.SetCast(ParseString(csvmovie.m_cast));
+        tmp.SetCountry(csvmovie.m_country);
+        tmp.SetDateAdded(csvmovie.m_dateAdded);
+        tmp.SetReleaseDate(csvmovie.m_releaseDate);
+        tmp.SetRating(csvmovie.m_rating);
+        // tmp.SetDuration(csvmovie.m_duration);
     }
+
 }
 
 int database::GetMovieCount()

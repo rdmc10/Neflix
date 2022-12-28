@@ -90,6 +90,9 @@
     <ClInclude Include="CSVMovie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ParseUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\database.db">
