@@ -61,24 +61,28 @@ void database::PopulateStorage(std::vector<CSVMovie> movies)
     }
 }
 
-void database::GetMoviesData()
+std::vector<Movie> database::GetMoviesData()
 {
     auto csvmovies = m_db.get_all<CSVMovie>();
     std::vector<Movie> moviesData;
     for (const auto& csvmovie : csvmovies) {
-        Movie tmp;
-        tmp.SetID(csvmovie.m_movieId);
-        tmp.SetType(csvmovie.m_type == "Movie" ? Movie::Type::Movie : Movie::Type::Show);
-        tmp.SetName(csvmovie.m_name);
-        tmp.SetDirectors(ParseString(csvmovie.m_directors));
-        tmp.SetCast(ParseString(csvmovie.m_cast));
-        tmp.SetCountry(csvmovie.m_country);
-        tmp.SetDateAdded(csvmovie.m_dateAdded);
-        tmp.SetReleaseDate(csvmovie.m_releaseDate);
-        tmp.SetRating(csvmovie.m_rating);
-        // tmp.SetDuration(csvmovie.m_duration);
+        Movie tmp (
+            csvmovie.m_movieId
+            , csvmovie.m_type == "Movie" ? Movie::Type::Movie : Movie::Type::Show
+            , csvmovie.m_name
+            , ParseString(csvmovie.m_directors)
+            , ParseString(csvmovie.m_cast)
+            , csvmovie.m_country
+            , csvmovie.m_dateAdded
+            , csvmovie.m_releaseDate
+            , csvmovie.m_rating
+            , std::stoi(GetFirstWord(csvmovie.m_duration))
+            , ParseString(csvmovie.m_categories)
+            , csvmovie.m_description
+        );
+        moviesData.emplace_back(tmp);
     }
-
+    return moviesData;
 }
 
 int database::GetMovieCount()

@@ -7,8 +7,6 @@ ProjectModernCpp::ProjectModernCpp(QWidget *parent)
     connect(ui->buttonRegister, SIGNAL(clicked()), this, SLOT(registerButtonClicked()));
     connect(ui->buttonLogin, SIGNAL(clicked()), this, SLOT(loginButtonClicked()));
 
-    
-
     if (db.GetMovieCount() == 0) {
         std::vector<std::vector<std::string>> table = db.readCSV("./netflix_titles.csv");
         std::vector<CSVMovie> allMovies;
@@ -22,7 +20,6 @@ ProjectModernCpp::ProjectModernCpp(QWidget *parent)
         }
         db.PopulateStorage(allMovies);
     }
-        
 }
 
 ProjectModernCpp::~ProjectModernCpp()

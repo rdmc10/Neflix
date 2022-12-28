@@ -2,7 +2,7 @@
 #include "Movie.h"
 
 Movie::Movie()
-	: m_type(Movie::Type::MOVIE)
+	: m_type(Movie::Type::Movie)
 	, m_name("")
 	, m_releaseDate(2022)
 	, m_duration(60)
@@ -157,12 +157,12 @@ void Movie::SetName(const std::string& name)
 	m_name = name;
 }
 
-void Movie::SetDirectors(const std::vector<Person>& directors)
+void Movie::SetDirectors(const std::vector<std::string>& directors)
 {
 	m_directors = directors;
 }
 
-void Movie::SetCast(const std::set<Person>& cast)
+void Movie::SetCast(const std::vector<std::string>& cast)
 {
 	m_cast = cast;
 }

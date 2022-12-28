@@ -22,7 +22,7 @@ public:
 	std::vector<std::string> readCSVRow(const std::string& row);
 
 	void PopulateStorage(std::vector<CSVMovie> movies);
-	void GetMoviesData();
+	std::vector<Movie> GetMoviesData();
 	int GetMovieCount();
 };
 
