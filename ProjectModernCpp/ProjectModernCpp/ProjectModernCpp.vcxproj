@@ -100,6 +100,7 @@
     <ClCompile Include="LoginSuccessful.cpp" />
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="MovieCategory.cpp" />
+    <ClCompile Include="MovieReview.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="ProjectModernCpp.cpp" />
     <ClCompile Include="Register.cpp" />
@@ -114,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CSVMovie.h" />
+    <ClInclude Include="MovieReview.h" />
     <ClInclude Include="ParseUtil.h" />
     <ClInclude Include="UserPreferences.h" />
     <QtMoc Include="LoginSuccessful.h" />
