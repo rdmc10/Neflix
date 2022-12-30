@@ -13,6 +13,11 @@ public:
 	void AddMovieLiked(const Movie& movie);
 	void AddCategoryLiked(const MovieCategory& movieCategory);
 	void AddActorLiked(const Person& actor);
+
+	void SetMoviesLiked(const std::vector<Movie>& moviesLiked);
+	void SetCategoriesLiked(const std::vector<MovieCategory>& categoriesLiked);
+	void SetActorsLiked(const std::vector<Person>& actorsLiked);
+
 	std::vector<Movie> GetMoviesLiked();
 	std::vector<MovieCategory> GetCategoriesLiked();
 	std::vector<Person> GetPersonLiked();
