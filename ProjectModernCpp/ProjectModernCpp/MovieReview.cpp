@@ -1,5 +1,19 @@
 #include "MovieReview.h"
 
+MovieReview::MovieReview() 
+	: m_review(true)
+	, m_userId(0)
+	, m_movieId(0)
+{
+}
+
+MovieReview::MovieReview(const uint32_t& movieId, const uint32_t& userId, const bool& review)
+	: m_review(review)
+	, m_userId(userId)
+	, m_movieId(movieId)
+{
+}
+
 uint32_t MovieReview::GetMovieId() const
 {
 	return m_movieId;
@@ -10,9 +24,9 @@ uint32_t MovieReview::GetUserId() const
 	return m_userId;
 }
 
-std::atomic_bool MovieReview::GetReview() const
+bool MovieReview::GetReview() const
 {
-	return std::atomic_bool(); // return m_review doesn't work
+	return m_review;
 }
 
 void MovieReview::SetMovieId(const uint32_t& movieId)
@@ -25,7 +39,7 @@ void MovieReview::SetUserId(const uint32_t& userId)
 	m_userId = userId;
 }
 
-void MovieReview::SetReview(const std::atomic_bool& review)
+void MovieReview::SetReview(const bool& review)
 {
-	//m_review = review; doesn't work with std::atomic_bool
+	m_review = review;
 }
