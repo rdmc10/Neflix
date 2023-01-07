@@ -28,5 +28,5 @@ float CosineSimilarity::ComputeCosineSimilarity(const std::vector<float>& a, con
 
 std::vector<float> CosineSimilarity::ComputeNormMovie(const Movie& movie)
 {
-	
+	return std::vector<float>();
 }
