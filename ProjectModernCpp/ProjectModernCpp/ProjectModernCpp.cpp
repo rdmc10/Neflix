@@ -1,5 +1,6 @@
 #include "ProjectModernCpp.h"
 #include "userpreferenceswindow.h"
+#include "CSVMovie.h"
 
 ProjectModernCpp::ProjectModernCpp(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::ProjectModernCppClass)
@@ -50,6 +51,7 @@ void ProjectModernCpp::loginButtonClicked()
         LoginSuccessful* loginSuccessful = new LoginSuccessful(this);
         hide();
         loginSuccessful->show();
+
     }
     else {
         QMessageBox::warning(this, "Warning!", "Username doesn't exist or password is incorrect!");

@@ -2,10 +2,6 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <regex>
-#include <sstream>
-#include <boost/algorithm/string.hpp>
-
 
 std::vector<std::string> ParseString (const std::string& str) {
     std::vector<std::string> result;
@@ -23,9 +19,3 @@ std::string GetFirstWord(const std::string& str) {
     return firstWord;
 }
 
-std::vector<std::string> SplitString (const std::string& string,const std::string& separator) {
-    std::vector<std::string> strs;
-    boost::split(strs, string, boost::is_any_of(separator));
-
-    return strs;
-}

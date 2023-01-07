@@ -2,6 +2,8 @@
 
 #include <string>
 #include <cstdint>
+#include <unordered_set>
+#include <boost/algorithm/string.hpp>
 
 namespace sql = sqlite_orm;
 
@@ -64,4 +66,29 @@ inline auto createMovieStorage(const std::string& filename)
 	);
 }
 
+
+inline std::vector<std::string> SplitString (const std::string& string,const std::string& separator) {
+    std::vector<std::string> strs;
+    boost::split(strs, string, boost::is_any_of(separator));
+
+    return strs;
+}
+
 using MovieDatabase = decltype(createMovieStorage(""));
+
+inline std::unordered_set<std::string> GetCategoriesFromDatabase() {
+    std::unordered_set<std::string> allCategories;
+    MovieDatabase m_db = createMovieStorage("database.db");
+    auto categoriesFromDb = m_db.select(sql::columns(&CSVMovie::m_categories));
+
+    for (const auto& categories : categoriesFromDb) {
+        std::string line = std::get<0>(categories);
+        std::vector<std::string> separatedLine = SplitString(line, ",");
+        for (auto& category : separatedLine) {
+            if (category[0] == ' ')category.erase(0, 1);
+            allCategories.insert(category);
+        }
+    }
+
+    return allCategories;
+}
