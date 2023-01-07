@@ -96,6 +96,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cluster.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="LoginSuccessful.cpp" />
     <ClCompile Include="Movie.cpp" />
@@ -114,6 +115,7 @@
     <QtUic Include="Register.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cluster.h" />
     <ClInclude Include="CSVMovie.h" />
     <ClInclude Include="MovieReview.h" />
     <ClInclude Include="ParseUtil.h" />
