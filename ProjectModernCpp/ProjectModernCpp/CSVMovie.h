@@ -92,3 +92,16 @@ inline std::unordered_set<std::string> GetCategoriesFromDatabase() {
 
     return allCategories;
 }
+
+inline std::unordered_set<std::string> GetRatingsFromDatabase() {
+	std::unordered_set<std::string> allRatings;
+	MovieDatabase m_db = createMovieStorage("database.db");
+	auto ratingsFromDb = m_db.select(sql::columns(&CSVMovie::m_rating));
+
+	for (const auto& ratings : ratingsFromDb) {
+		if (std::get<0>(ratings) != "")
+			allRatings.insert(std::get<0>(ratings));
+	}
+
+	return allRatings;
+}

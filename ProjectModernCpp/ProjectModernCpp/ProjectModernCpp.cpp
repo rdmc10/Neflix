@@ -51,6 +51,11 @@ void ProjectModernCpp::loginButtonClicked()
         LoginSuccessful* loginSuccessful = new LoginSuccessful(this);
         hide();
         loginSuccessful->show();
+        std::unordered_set<std::string> ratings = GetRatingsFromDatabase();
+        qDebug() << ratings.size();
+        for (auto s : ratings) {
+            qDebug() << QString::fromStdString(s);
+        }
 
     }
     else {
