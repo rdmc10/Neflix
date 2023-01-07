@@ -1,4 +1,5 @@
 #include "ProjectModernCpp.h"
+#include "userpreferenceswindow.h"
 
 ProjectModernCpp::ProjectModernCpp(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::ProjectModernCppClass)
@@ -32,7 +33,9 @@ void ProjectModernCpp::registerButtonClicked()
     Register *registerWindow = new Register();
     hide();
     // TODO : free memory for current window
-    registerWindow->show();
+    //registerWindow->show();
+    UserPreferencesWindow* upw = new UserPreferencesWindow();
+    upw->show();
 }
 
 void ProjectModernCpp::loginButtonClicked()

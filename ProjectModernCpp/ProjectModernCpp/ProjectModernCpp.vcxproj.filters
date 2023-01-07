@@ -76,6 +76,9 @@
     <ClCompile Include="CosineSimilarity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="userpreferenceswindow.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -130,12 +133,18 @@
     <QtMoc Include="LoginSuccessful.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
+    <QtMoc Include="userpreferenceswindow.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Register.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="LoginSuccessful.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="userpreferenceswindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
