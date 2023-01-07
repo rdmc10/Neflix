@@ -8,6 +8,7 @@ private:
 	enum class MovieType {
 		Movie,
 		TV_Show,
+		Both
 	};
 public:
 	UserPreferences();
@@ -17,9 +18,13 @@ public:
 
 	void AddMovieLiked(const Movie& movie);
 	void AddCategoryLiked(const MovieCategory& movieCategory);
+	void AddRatingsLiked(const std::string& rating);
+	void AddTypeLiked(const MovieType& type);
 
 	void SetMoviesLiked(const std::vector<Movie>& moviesLiked);
 	void SetCategoriesLiked(const std::vector<MovieCategory>& categoriesLiked);
+	void SetRatingsLiked(const std::vector<std::string>& ratingsLiked);
+	void SetTypeLiked(const MovieType& typeLiked);
 
 	std::vector<Movie> GetMoviesLiked();
 	std::vector<MovieCategory> GetCategoriesLiked();
