@@ -4,6 +4,11 @@
 #include "CSVMovie.h"
 class UserPreferences
 {
+private:
+	enum class MovieType {
+		Movie,
+		TV_Show,
+	};
 public:
 	UserPreferences();
 	UserPreferences(const UserPreferences& userPreferences);
@@ -12,22 +17,20 @@ public:
 
 	void AddMovieLiked(const Movie& movie);
 	void AddCategoryLiked(const MovieCategory& movieCategory);
-	void AddActorLiked(const Person& actor);
 
 	void SetMoviesLiked(const std::vector<Movie>& moviesLiked);
 	void SetCategoriesLiked(const std::vector<MovieCategory>& categoriesLiked);
-	void SetActorsLiked(const std::vector<Person>& actorsLiked);
 
 	std::vector<Movie> GetMoviesLiked();
 	std::vector<MovieCategory> GetCategoriesLiked();
-	std::vector<Person> GetPersonLiked();
 
 	friend inline auto createUserPreferencesStorage(const std::string& filename);
 
 private:
 	std::vector<Movie> m_moviesLiked;
 	std::vector<MovieCategory> m_categoriesLiked;
-	std::vector<Person> m_actorsLiked;
+	std::vector<std::string> m_ratingsLiked;
+	MovieType m_typeLiked;
 };
 
 
@@ -37,11 +40,12 @@ inline auto createUserPreferencesStorage(const std::string& filename)
 	return sql::make_storage(
 		filename,
 		sql::make_table(
-			"movies",
-			sql::make_column("type", &UserPreferences::m_moviesLiked),
-			sql::make_column("name", &UserPreferences::m_actorsLiked),
-			sql::make_column("directors", &UserPreferences::m_categoriesLiked)
-
+			"user_preferences",
+			sql::make_column("user_id", &UserPreferences::m_moviesLiked),
+			sql::make_column("movies", &UserPreferences::m_moviesLiked),
+			sql::make_column("rating", &UserPreferences::m_ratingsLiked),
+			sql::make_column("categories", &UserPreferences::m_categoriesLiked),
+			sql::make_column("type", &UserPreferences::m_typeLiked)
 		)
 	);
 }
