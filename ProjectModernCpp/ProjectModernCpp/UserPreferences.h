@@ -28,6 +28,8 @@ public:
 
 	std::vector<Movie> GetMoviesLiked();
 	std::vector<MovieCategory> GetCategoriesLiked();
+	std::vector<std::string> GetRatingsLiked();
+	MovieType GetTypeLiked();
 
 	friend inline auto createUserPreferencesStorage(const std::string& filename);
 

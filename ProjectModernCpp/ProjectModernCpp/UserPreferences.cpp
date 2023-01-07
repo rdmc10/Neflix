@@ -7,6 +7,8 @@ UserPreferences::UserPreferences()
 UserPreferences::UserPreferences(const UserPreferences& userPreferences) 
 	: m_moviesLiked(userPreferences.m_moviesLiked)
 	, m_categoriesLiked(userPreferences.m_categoriesLiked)
+	, m_ratingsLiked(userPreferences.m_ratingsLiked)
+	, m_typeLiked(userPreferences.m_typeLiked)
 {
 }
 
@@ -14,6 +16,8 @@ UserPreferences& UserPreferences::operator=(const UserPreferences& userPreferenc
 {
 	m_moviesLiked = userPreferences.m_moviesLiked;
 	m_categoriesLiked = userPreferences.m_categoriesLiked;
+	m_ratingsLiked = userPreferences.m_ratingsLiked;
+	m_typeLiked = userPreferences.m_typeLiked;
 
 	return *this;
 }
@@ -68,5 +72,15 @@ std::vector<Movie> UserPreferences::GetMoviesLiked()
 std::vector<MovieCategory> UserPreferences::GetCategoriesLiked()
 {
 	return this->m_categoriesLiked;
+}
+
+std::vector<std::string> UserPreferences::GetRatingsLiked()
+{
+	return m_ratingsLiked;
+}
+
+UserPreferences::MovieType UserPreferences::GetTypeLiked()
+{
+	return m_typeLiked;
 }
 
