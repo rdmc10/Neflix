@@ -34,9 +34,7 @@ void ProjectModernCpp::registerButtonClicked()
     Register *registerWindow = new Register();
     hide();
     // TODO : free memory for current window
-    //registerWindow->show();
-    UserPreferencesWindow* upw = new UserPreferencesWindow();
-    upw->show();
+    registerWindow->show();
 }
 
 void ProjectModernCpp::loginButtonClicked()
@@ -51,12 +49,6 @@ void ProjectModernCpp::loginButtonClicked()
         LoginSuccessful* loginSuccessful = new LoginSuccessful(this);
         hide();
         loginSuccessful->show();
-        std::unordered_set<std::string> ratings = GetRatingsFromDatabase();
-        qDebug() << ratings.size();
-        for (auto s : ratings) {
-            qDebug() << QString::fromStdString(s);
-        }
-
     }
     else {
         QMessageBox::warning(this, "Warning!", "Username doesn't exist or password is incorrect!");

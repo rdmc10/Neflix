@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Movie.h"
+#include "userpreferenceswindow.h"
 
 Register::Register(QWidget *parent)
 	: QMainWindow(parent), registerWindow(new Ui::RegisterClass)
@@ -51,7 +52,9 @@ void Register::registerButtonClicked()
 		auto id = userStorage.insert(user);
 		user.SetId(id);
 		QMessageBox::information(this, "Registered", "Account created successfully!");
-		cancelButtonClicked();
+		UserPreferencesWindow* upw = new UserPreferencesWindow();
+		hide();
+		upw->show();
 	}
 	else {
 		QMessageBox::warning(this, "Warning", "An account with this username or email already exists!");
