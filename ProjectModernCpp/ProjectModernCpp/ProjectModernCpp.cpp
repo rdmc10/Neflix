@@ -1,6 +1,5 @@
 #include "ProjectModernCpp.h"
 #include "userpreferenceswindow.h"
-#include "CSVMovie.h"
 
 ProjectModernCpp::ProjectModernCpp(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::ProjectModernCppClass)
@@ -34,7 +33,10 @@ void ProjectModernCpp::registerButtonClicked()
     Register *registerWindow = new Register();
     hide();
     // TODO : free memory for current window
-    registerWindow->show();
+    UserPreferencesWindow* upw = new UserPreferencesWindow();
+    hide();
+    upw->show();
+    //registerWindow->show();
 }
 
 void ProjectModernCpp::loginButtonClicked()

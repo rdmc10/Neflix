@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <unordered_set>
 #include <boost/algorithm/string.hpp>
+#include "sqlite_orm/sqlite_orm.h"
 
 namespace sql = sqlite_orm;
 

@@ -2,6 +2,8 @@
 #define USERPREFERENCESWINDOW_H
 
 #include <QWidget>
+#include <unordered_set>
+#include "CSVMovie.h"
 
 namespace Ui {
 class UserPreferencesWindow;
@@ -16,7 +18,10 @@ public:
     ~UserPreferencesWindow();
 
 private:
-    Ui::UserPreferencesWindow *ui;
+    Ui::UserPreferencesWindow *userPreferences;
+
+    std::unordered_set<std::string> m_movieCategories;
+
 };
 
 #endif // USERPREFERENCESWINDOW_H

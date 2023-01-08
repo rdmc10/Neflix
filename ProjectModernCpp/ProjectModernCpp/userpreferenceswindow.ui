@@ -60,6 +60,16 @@
     <string>Movie Types</string>
    </property>
   </widget>
+  <widget class="QListWidget" name="listWidget_movieCategories">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>50</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
