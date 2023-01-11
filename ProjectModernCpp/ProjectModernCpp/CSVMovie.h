@@ -106,3 +106,26 @@ inline std::unordered_set<std::string> GetRatingsFromDatabase() {
 
 	return allRatings;
 }
+
+inline std::unordered_set<std::string> GetMoviesFromDatabase() {
+	std::unordered_set<std::string> allMovies;
+	MovieDatabase m_db = createMovieStorage("database.db");
+	auto moviesFromDb = m_db.select(sql::columns(&CSVMovie::m_name));
+
+	for (const auto& movies : moviesFromDb) {
+		allMovies.insert(std::get<0>(movies));
+	}
+	return allMovies;
+}
+
+inline std::unordered_set<std::string> GetCertainMoviesFromDatabase(const std::string& searchString) {
+
+	std::unordered_set<std::string> allMovies;
+	MovieDatabase m_db = createMovieStorage("database.db");
+	auto moviesFromDb = m_db.select(sql::columns(&CSVMovie::m_name), sql::where(sql::like(&CSVMovie::m_name, "%" + searchString + "%")));
+
+	for (const auto& movies : moviesFromDb) {
+		allMovies.insert(std::get<0>(movies));
+	}
+	return allMovies;
+}
