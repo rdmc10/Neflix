@@ -1,6 +1,6 @@
 #include "userpreferenceswindow.h"
 #include "ui_userpreferenceswindow.h"
-
+#include "MoviePage.h"
 
 UserPreferencesWindow::UserPreferencesWindow(QWidget *parent) :
     QWidget(parent),
@@ -75,8 +75,9 @@ void UserPreferencesWindow::onMoviesWidgetDoubleClick(QListWidgetItem* item)
 
 void UserPreferencesWindow::onSelectedMoviesWidgetDoubleClick(QListWidgetItem* item)
 {
-    userPreferences->listWidget_selectedMovies->takeItem(userPreferences->listWidget_selectedMovies->row(item));
-
+    //userPreferences->listWidget_selectedMovies->takeItem(userPreferences->listWidget_selectedMovies->row(item));
+    MoviePage* moviePage = new MoviePage(GetWholeMovieFromDatabaseByName(userPreferences->listWidget_selectedMovies->currentItem()->text().toStdString()), this);
+    moviePage->show();
 }
 
 void UserPreferencesWindow::onSaveButtonClick()

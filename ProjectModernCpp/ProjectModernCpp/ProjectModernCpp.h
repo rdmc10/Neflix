@@ -5,6 +5,7 @@
 #include "Register.h"
 #include "LoginSuccessful.h"
 #include "Database.h"
+#include "MoviePage.h"
 #include "CSVMovie.h"
 #include "Movie.h"
 

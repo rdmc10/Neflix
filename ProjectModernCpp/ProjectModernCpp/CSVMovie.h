@@ -129,3 +129,14 @@ inline std::unordered_set<std::string> GetCertainMoviesFromDatabase(const std::s
 	}
 	return allMovies;
 }
+
+inline CSVMovie GetWholeMovieFromDatabaseByName(const std::string& movieName) {
+
+	MovieDatabase m_db = createMovieStorage("database.db");
+	auto moviesFromDb = m_db.select(sql::columns(&CSVMovie::m_movieId, &CSVMovie::m_type, &CSVMovie::m_name, &CSVMovie::m_directors, &CSVMovie::m_cast, &CSVMovie::m_country,
+		&CSVMovie::m_dateAdded, &CSVMovie::m_releaseDate, &CSVMovie::m_rating, &CSVMovie::m_duration, &CSVMovie::m_categories, &CSVMovie::m_description), sql::where(sql::like(&CSVMovie::m_name, movieName)));
+	
+	return CSVMovie(std::get<0>(moviesFromDb[0]), std::get<1>(moviesFromDb[0]), std::get<2>(moviesFromDb[0]), std::get<3>(moviesFromDb[0]), std::get<4>(moviesFromDb[0]), std::get<5>(moviesFromDb[0]),
+		std::get<6>(moviesFromDb[0]), std::get<7>(moviesFromDb[0]), std::get<8>(moviesFromDb[0]), std::get<9>(moviesFromDb[0]), std::get<10>(moviesFromDb[0]), std::get<11>(moviesFromDb[0]));
+
+}

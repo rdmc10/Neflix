@@ -47,8 +47,10 @@ void ProjectModernCpp::loginButtonClicked()
 
     if (user.GetPassword() == password.toStdString() && user.GetUsername() == username.toStdString()) {
         LoginSuccessful* loginSuccessful = new LoginSuccessful(this);
-        hide();
-        loginSuccessful->show();
+        //hide();
+        MoviePage* moviePage = new MoviePage(GetWholeMovieFromDatabaseByName("The Great British Baking Show"), this);
+        moviePage->show();
+        //loginSuccessful->show();
     }
     else {
         QMessageBox::warning(this, "Warning!", "Username doesn't exist or password is incorrect!");

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
+#include "CSVMovie.h"
 #include "ui_MoviePage.h"
 
 QT_BEGIN_NAMESPACE
@@ -12,9 +13,9 @@ class MoviePage : public QMainWindow
 	Q_OBJECT
 
 public:
-	MoviePage(QWidget *parent = nullptr);
+	MoviePage(CSVMovie movie, QWidget *parent = nullptr);
 	~MoviePage();
 
 private:
-	Ui::MoviePageClass *ui;
+	Ui::MoviePageClass *moviePage;
 };
