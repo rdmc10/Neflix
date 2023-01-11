@@ -102,6 +102,7 @@
     <ClCompile Include="LoginSuccessful.cpp" />
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="MovieCategory.cpp" />
+    <ClCompile Include="MoviePage.cpp" />
     <ClCompile Include="MovieReview.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="ProjectModernCpp.cpp" />
@@ -111,6 +112,7 @@
     <ClCompile Include="userpreferenceswindow.cpp" />
     <QtRcc Include="ProjectModernCpp.qrc" />
     <QtUic Include="LoginSuccessful.ui" />
+    <QtUic Include="MoviePage.ui" />
     <QtUic Include="ProjectModernCpp.ui" />
     <QtMoc Include="ProjectModernCpp.h" />
     <ClCompile Include="main.cpp" />
@@ -121,6 +123,7 @@
     <ClInclude Include="Cluster.h" />
     <ClInclude Include="CosineSimilarity.h" />
     <ClInclude Include="CSVMovie.h" />
+    <QtMoc Include="MoviePage.h" />
     <ClInclude Include="MovieReview.h" />
     <ClInclude Include="ParseUtil.h" />
     <ClInclude Include="UserPreferences.h" />
