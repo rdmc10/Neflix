@@ -152,7 +152,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>Search for a movie here</string>
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Search movie here</string>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget_movies">

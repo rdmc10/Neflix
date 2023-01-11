@@ -11,9 +11,7 @@ ProjectModernCpp::ProjectModernCpp(QWidget *parent)
     if (db.GetMovieCount() == 0) {
         std::vector<std::vector<std::string>> table = db.readCSV("./netflix_titles.csv");
         std::vector<CSVMovie> allMovies;
-        for (uint32_t i = 0; i < table.size(); ++i) {
-            if (i == 0)
-                continue;
+        for (uint32_t i = 1; i < table.size(); ++i) {
             table[i][0].erase(0, 1);
             CSVMovie tmpMovie(-1, table[i][1], table[i][2], table[i][3], table[i][4], table[i][5], table[i][6], (uint16_t)stoi(table[i][7]), table[i][8], table[i][9]
                 , table[i][10], table[i][11]);
