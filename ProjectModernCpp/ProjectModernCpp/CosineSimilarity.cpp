@@ -1,4 +1,5 @@
 #include "CosineSimilarity.h"
+#include "Movie.h"
 
 std::vector<Movie> CosineSimilarity::GetSimilarMovies(const Movie& movie)
 {
@@ -28,5 +29,15 @@ float CosineSimilarity::ComputeCosineSimilarity(const std::vector<float>& a, con
 
 std::vector<float> CosineSimilarity::ComputeNormMovie(const Movie& movie)
 {
-	return std::vector<float>();
+	std::vector<float> result;
+	float categoryNorm = 0.f;
+
+	for (const auto& categ : movie.GetCategories()) {
+		categoryNorm += Movie::m_CategoryMapping[categ];
+	}
+	categoryNorm /= movie.GetCategories().size();
+	result.push_back(categoryNorm);
+
+
+	return {};
 }

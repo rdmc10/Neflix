@@ -6,7 +6,9 @@
 #include <vector>
 #include <sqlite_orm/sqlite_orm.h>
 #include <fstream>
-
+#include <unordered_set>
+#include <unordered_map>
+#include "CSVMovie.h"
 //#include <unordered_set>
 
 namespace sql = sqlite_orm;
@@ -14,6 +16,7 @@ namespace sql = sqlite_orm;
 class Movie {
 
 public:
+	static std::unordered_map<std::string, float> m_CategoryMapping;
 
 	enum class Type {
 		Movie,
@@ -57,6 +60,8 @@ public:
 	void SetCategories(const std::vector<std::string>& categories);
 	void SetDescription(const std::string& description);
 
+	static void ConstructCategoryMapping();
+
 	bool operator<(const Movie& movie);
 
 	friend inline auto createMovieStorage(const std::string& filename);
@@ -75,6 +80,7 @@ private:
 	uint16_t m_duration;
 	std::vector<std::string> m_categories;
 	std::string m_description;
+
 
 };
 
