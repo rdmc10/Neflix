@@ -14,14 +14,94 @@
    <string>LoginSuccessful</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QListView" name="movieListView">
+   <widget class="QLabel" name="label_username">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>0</y>
+      <x>40</x>
+      <y>10</y>
+      <width>221</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="text">
+     <string>username</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_searchMovie">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_searchMovieByCategory">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>40</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget_movies">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>70</y>
       <width>256</width>
       <height>192</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_preferences">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>280</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Your preferences</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_wishlist">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>280</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Wishlist</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_recommandations">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>280</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Recommandations</string>
     </property>
    </widget>
   </widget>

@@ -16,6 +16,11 @@ public:
 	MoviePage(CSVMovie movie, QWidget *parent = nullptr);
 	~MoviePage();
 
+private slots:
+
+	void onReturnButtonClick();
+	void onLikeButtonClick();
+
 private:
 	Ui::MoviePageClass *moviePage;
 };

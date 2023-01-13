@@ -79,6 +79,7 @@ inline User getUserFromStorage(std::string username) {
 	if (userFromDatabase.size() != 0) {
 		user.SetUsername(std::get<0>(userFromDatabase.at(0)));
 		user.SetPassword(std::get<1>(userFromDatabase.at(0)));
+		user.SetId(std::get < 6 >(userFromDatabase.at(0)));
 	}
 		
 	return user;

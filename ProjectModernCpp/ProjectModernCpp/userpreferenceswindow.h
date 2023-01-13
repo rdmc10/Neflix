@@ -5,6 +5,8 @@
 #include <unordered_set>
 #include <vector>
 #include "CSVMovie.h"
+#include "UserPreferences.h"
+#include "User.h"
 #include <QListWidget>
 
 
@@ -18,7 +20,7 @@ class UserPreferencesWindow : public QWidget
     Q_OBJECT
 
 public:
-    explicit UserPreferencesWindow(QWidget *parent = nullptr);
+    explicit UserPreferencesWindow(const User& user, QWidget *parent = nullptr);
 
     ~UserPreferencesWindow();
 
@@ -37,7 +39,7 @@ private slots:
 private:
     Ui::UserPreferencesWindow *userPreferences;
     
-
+    User m_user;
 
     std::unordered_set<std::string> m_movieCategories;
     std::unordered_set<std::string> m_movieRatings;

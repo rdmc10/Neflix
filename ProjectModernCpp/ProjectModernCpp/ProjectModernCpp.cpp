@@ -31,10 +31,10 @@ void ProjectModernCpp::registerButtonClicked()
     Register *registerWindow = new Register();
     hide();
     // TODO : free memory for current window
-    UserPreferencesWindow* upw = new UserPreferencesWindow();
-    hide();
-    upw->show();
-    //registerWindow->show();
+    //UserPreferencesWindow* upw = new UserPreferencesWindow();
+    //hide();
+    //upw->show();
+    registerWindow->show();
 }
 
 void ProjectModernCpp::loginButtonClicked()
@@ -46,11 +46,11 @@ void ProjectModernCpp::loginButtonClicked()
     User user = getUserFromStorage(username.toStdString());
 
     if (user.GetPassword() == password.toStdString() && user.GetUsername() == username.toStdString()) {
-        LoginSuccessful* loginSuccessful = new LoginSuccessful(this);
-        //hide();
-        MoviePage* moviePage = new MoviePage(GetWholeMovieFromDatabaseByName("The Great British Baking Show"), this);
-        moviePage->show();
-        //loginSuccessful->show();
+        LoginSuccessful* loginSuccessful = new LoginSuccessful(user, this);
+        hide();
+        //MoviePage* moviePage = new MoviePage(GetWholeMovieFromDatabaseByName("The Great British Baking Show"), this);
+        //moviePage->show();
+        loginSuccessful->show();
     }
     else {
         QMessageBox::warning(this, "Warning!", "Username doesn't exist or password is incorrect!");

@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include "ui_Register.h"
 #include "ProjectModernCpp.h"
+#include "UserPreferences.h"
 
 class Register : public QMainWindow
 {

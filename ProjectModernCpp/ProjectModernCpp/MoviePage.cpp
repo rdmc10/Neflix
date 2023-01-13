@@ -6,6 +6,9 @@ MoviePage::MoviePage(CSVMovie movie, QWidget *parent)
 {
 	moviePage->setupUi(this);
 
+	connect(moviePage->button_return, SIGNAL(clicked()), SLOT(onReturnButtonClick()));
+	connect(moviePage->button_like, SIGNAL(clicked()), SLOT(onLikeButtonClick()));
+
 	moviePage->label_movieName->setText(QString::fromStdString(movie.m_name + " ( " + movie.m_type + " - " + std::to_string(movie.m_releaseDate) + " )"));
 	moviePage->label_movieName->setAlignment(Qt::AlignCenter);
 
@@ -44,7 +47,20 @@ MoviePage::MoviePage(CSVMovie movie, QWidget *parent)
 
 }
 
+void MoviePage::onReturnButtonClick() {
+
+	delete this;
+
+}
+
+void MoviePage::onLikeButtonClick()
+{
+	// TODO: Add movie to UserPreferences database
+}
+
 MoviePage::~MoviePage()
 {
 	delete moviePage;
 }
+
+

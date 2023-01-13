@@ -40,6 +40,7 @@ void Register::registerButtonClicked()
 {
 	User user = GetRegisterData();
 	auto userStorage = createStorage("database.db");
+	auto userPreferencesStorage = createUserPreferencesStorage("database.db");
 	userStorage.sync_schema();
 	User userFromDatabase = getUserFromStorage(user.GetUsername());
 
@@ -50,10 +51,15 @@ void Register::registerButtonClicked()
 	
 	if (newUser) {
 		auto id = userStorage.insert(user);
+
+		Preferences pref(id, "", "", "", "");
+		userPreferencesStorage.insert(pref);
 		user.SetId(id);
 		QMessageBox::information(this, "Registered", "Account created successfully!");
-		UserPreferencesWindow* upw = new UserPreferencesWindow();
+		UserPreferencesWindow* upw = new UserPreferencesWindow(user);
+		LoginSuccessful* mainPage = new LoginSuccessful(user);
 		hide();
+		mainPage->show();
 		upw->show();
 	}
 	else {

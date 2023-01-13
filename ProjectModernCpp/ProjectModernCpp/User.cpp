@@ -24,6 +24,7 @@ User::User(const std::string& password, const std::string& userName, const std::
 
 User::User(const User& user)
 	:m_username(user.m_username)
+	, m_userId(user.m_userId)
 	, m_password(user.m_password)
 	, m_firstName(user.m_firstName)
 	, m_lastName(user.m_lastName)
@@ -35,6 +36,7 @@ User::User(const User& user)
 
 User& User::operator=(const User& user)
 {
+	m_userId = user.GetId();
 	m_password = user.GetPassword();
 	m_username = user.GetUsername();
 	m_firstName = user.GetFirstName();
