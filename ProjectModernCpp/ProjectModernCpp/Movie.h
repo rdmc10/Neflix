@@ -27,7 +27,7 @@ public:
 
 	Movie();
 	Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<std::string>& directors, const std::vector<std::string>& cast,const std::string& country, const std::string& dateAdded, uint16_t releaseDate, const std::string& rating,
-		 uint16_t duration, const std::vector<std::string>& categories, const std::string& description);
+		const std::string& duration, const std::vector<std::string>& categories, const std::string& description);
 	Movie(const Movie& movie);
 	Movie(Movie&& movie);
 
@@ -43,7 +43,7 @@ public:
 	std::string GetDateAdded() const;
 	uint16_t GetReleaseDate() const;
 	std::string GetRating() const;
-	uint16_t GetDuration() const;
+	std::string GetDuration() const;
 	std::vector<std::string> GetCategories() const;
 	std::string GetDescription() const;
 
@@ -56,7 +56,7 @@ public:
 	void SetDateAdded(const std::string& dateAdded);
 	void SetReleaseDate(uint16_t releaseDate);
 	void SetRating(const std::string& rating);
-	void SetDuration(const uint16_t& duration);
+	void SetDuration(const int& duration);
 	void SetCategories(const std::vector<std::string>& categories);
 	void SetDescription(const std::string& description);
 
@@ -75,9 +75,9 @@ private:
 	std::vector<std::string> m_cast;
 	std::string m_country;
 	std::string m_dateAdded;
-	uint16_t m_releaseDate;
+	int m_releaseDate;
 	std::string m_rating;
-	uint16_t m_duration;
+	std::string m_duration;
 	std::vector<std::string> m_categories;
 	std::string m_description;
 

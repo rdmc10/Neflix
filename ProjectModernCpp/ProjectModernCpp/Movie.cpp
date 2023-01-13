@@ -9,12 +9,12 @@ Movie::Movie()
 	: m_type(Movie::Type::Movie)
 	, m_name("")
 	, m_releaseDate(2022)
-	, m_duration(60)
+	, m_duration("60")
 	, m_description("No description available.")
 {
 }
 
-Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<std::string>& directors, const std::vector<std::string>& cast, const std::string& country,const std::string& dateAdded, uint16_t releaseDate, const std::string& rating, uint16_t duration,
+Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<std::string>& directors, const std::vector<std::string>& cast, const std::string& country,const std::string& dateAdded, uint16_t releaseDate, const std::string& rating, const std::string& duration,
 	const std::vector<std::string>& categories, const std::string& description)
 	: m_movieId()
 	, m_type(type)
@@ -131,7 +131,7 @@ std::string Movie::GetRating() const
 	return m_rating;
 }
 
-uint16_t Movie::GetDuration() const
+std::string Movie::GetDuration() const
 {
 	return m_duration;
 }
@@ -191,7 +191,7 @@ void Movie::SetRating(const std::string& rating)
 	m_rating = rating;
 }
 
-void Movie::SetDuration(const uint16_t& duration)
+void Movie::SetDuration(const int& duration)
 {
 	m_duration = duration;
 }

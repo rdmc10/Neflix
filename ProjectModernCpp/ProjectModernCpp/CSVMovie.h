@@ -24,7 +24,7 @@ struct CSVMovie {
 	std::string m_description;
 
 	CSVMovie(uint32_t movieId, const std::string& type, const std::string& name, const std::string& directors, const std::string& cast,
-		const std::string& country, const std::string& dateAdded, uint16_t releaseDate,
+		const std::string& country, const std::string& dateAdded, int releaseDate,
 		const std::string& rating, const std::string& duration, const std::string& categories, const std::string& description)
 		:m_movieId(movieId),
 		m_type(type),

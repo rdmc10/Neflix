@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <unordered_map>
 #include "Movie.h"
 #include "Cluster.h"
 
@@ -9,18 +10,15 @@ public:
 	
 	// Constructor
 
-	std::vector<Movie> GetSimilarMovies(const Movie& movie);
+	static std::vector<Movie> GetSimilarMovies(const Movie& movie, const std::vector<Movie>& allMovies);
 
 
 private:
-	float ComputeCosineSimilarity(const std::vector<float>& a, const std::vector<float>& b);
-	std::vector<float> ComputeNormMovie(const Movie& movie);
+	static float ComputeCosineSimilarity(const std::vector<float>& a, const std::vector<float>& b);
+	static std::vector<float> ComputeNormMovie(const Movie& movie);
 
 
 private:
 	std::vector<Cluster> m_clusters;
-	
-	std::vector<Movie> m_movies;
-
 };
 

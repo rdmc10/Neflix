@@ -59,7 +59,7 @@ struct Preferences {
 	}
 	Preferences(int id) {
 		m_user_id = id;
-		m_preferencesCategoriesLiked + "";
+		m_preferencesCategoriesLiked = "";
 		m_preferencesMoviesLiked = "";
 		m_preferencesRatingsLiked = "";
 		m_preferencesTypeLiked = "";

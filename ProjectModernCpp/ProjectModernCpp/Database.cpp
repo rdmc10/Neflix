@@ -1,6 +1,7 @@
 #include "Database.h"
 #include "ParseUtil.h"
 #include <qmainwindow.h>
+#include <string>
 
 enum class CSVState {
     UnquotedField,
@@ -76,12 +77,14 @@ std::vector<Movie> database::GetMoviesData()
             , csvmovie.m_dateAdded
             , csvmovie.m_releaseDate
             , csvmovie.m_rating
-            , std::stoi(GetFirstWord(csvmovie.m_duration))
+            , csvmovie.m_duration
             , ParseString(csvmovie.m_categories)
             , csvmovie.m_description
         );
-        moviesData.emplace_back(tmp);
+
+        moviesData.push_back(tmp);
     }
+    qDebug() << moviesData.size();
     return moviesData;
 }
 
