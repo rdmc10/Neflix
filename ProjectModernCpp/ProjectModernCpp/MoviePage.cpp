@@ -144,6 +144,44 @@ void MoviePage::onWishlistButtonClick()
 
 void MoviePage::onWatchedButtonClick()
 {
+	using namespace sqlite_orm;
+
+	auto movieDB = createMovieStorage("database.db");
+    auto userMovieRelationsDB = createUserMovieRelationsDB("database.db");
+	auto movieData = movieDB.select(sql::columns(&CSVMovie::m_movieId)
+		, sql::where(c(&CSVMovie::m_name) == m_movie.m_name));
+	uint32_t movieID = std::get<0>(movieData.at(0));
+	auto userMovieRelations = userMovieRelationsDB.select(sql::columns(&Relations::m_user_id, &Relations::m_movie_id, &Relations::m_isWatched,
+		&Relations::m_isOnWishlist, &Relations::m_isLiked)
+		, sql::where(c(&Relations::m_movie_id) == movieID));
+
+	if (userMovieRelations.size() == 0) {
+		Relations r(m_user.GetId(), movieID, true, false, false);
+		userMovieRelationsDB.insert(r);
+		moviePage->button_watched->setText(QString("Unwatch"));
+	}
+	else {
+		bool isLiked = std::get<4>(userMovieRelations[0]);
+		bool watched = true;
+		bool wishlist = std::get<3>(userMovieRelations[0]);
+		if (std::get<2>(userMovieRelations[0]) == true) {
+			bool fal = false;
+			userMovieRelationsDB.update_all(set(c(&Relations::m_user_id) = m_user.GetId(),
+				c(&Relations::m_movie_id) = movieID,
+				c(&Relations::m_isWatched) = fal,
+				c(&Relations::m_isOnWishlist) = wishlist,
+				c(&Relations::m_isLiked) = isLiked), sql::where(c(&Relations::m_movie_id) == movieID));
+			moviePage->button_watched->setText(QString("Watched"));
+		}
+		else {
+			userMovieRelationsDB.update_all(set(c(&Relations::m_user_id) = m_user.GetId(),
+				c(&Relations::m_movie_id) = movieID,
+				c(&Relations::m_isWatched) = watched,
+				c(&Relations::m_isOnWishlist) = wishlist,
+				c(&Relations::m_isLiked) = isLiked), sql::where(c(&Relations::m_movie_id) == movieID));
+			moviePage->button_watched->setText(QString("Unwatch"));
+		}
+	}
 }
 
 MoviePage::~MoviePage()
