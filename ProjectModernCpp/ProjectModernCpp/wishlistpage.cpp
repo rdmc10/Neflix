@@ -3,7 +3,7 @@
 WishlistPage::WishlistPage(const User& user, QWidget *parent) :
     m_user(user),
     QWidget(parent),
-    ui(new Ui::WishlistPage)
+    ui(new Ui::WishlistPage())
 {
     ui->setupUi(this);
 	connect(ui->pushButton_close, SIGNAL(clicked()), SLOT(onCloseButtonClick()));
@@ -24,7 +24,8 @@ WishlistPage::WishlistPage(const User& user, QWidget *parent) :
 }
 
 void WishlistPage::onCloseButtonClick() {
-	delete this;
+	hide();
+	delete ui;
 }
 
 WishlistPage::~WishlistPage()
