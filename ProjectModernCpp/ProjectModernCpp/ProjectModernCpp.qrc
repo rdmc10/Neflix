@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="ProjectModernCpp">
-    </qresource>
+  <qresource prefix="ProjectModernCpp">
+    <file>NefixDesign/copyright.png</file>
+    <file>NefixDesign/neflix_long_logo.png</file>
+  </qresource>
 </RCC>

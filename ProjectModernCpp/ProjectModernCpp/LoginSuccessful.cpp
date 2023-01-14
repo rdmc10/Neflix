@@ -12,7 +12,7 @@ LoginSuccessful::LoginSuccessful(const User& user, QWidget* parent)
 	connect(mainPage->lineEdit_searchMovie, SIGNAL(textChanged(const QString&)), this, SLOT(onSearchBarChange(const QString&)));
 
 
-	mainPage->label_username->setText(QString::fromStdString("Username: " + user.GetUsername() + " " + std::to_string(user.GetId())));
+	mainPage->label_username->setText(QString::fromStdString("Username: " + user.GetUsername()));
 
 
 	

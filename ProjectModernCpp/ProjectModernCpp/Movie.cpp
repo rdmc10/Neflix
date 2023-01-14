@@ -209,21 +209,6 @@ void Movie::SetDescription(const std::string& description)
 	m_description = description;
 }
 
-std::unordered_map<std::string, float> Movie::m_CategoryMapping = { {"",0.f} };
-
-void Movie::ConstructCategoryMapping()
-{
-	std::unordered_set<std::string> allCategories = GetCategoriesFromDatabase();
-	float value = 1.f;
-
-	for (const auto& category : allCategories) {
-		m_CategoryMapping[category] = value;
-		value += 1.f;
-		qDebug() << m_CategoryMapping[category];
-	}
-
-}
-
 bool Movie::operator<(const Movie& movie)
 {
 	return this->m_name < movie.m_name;

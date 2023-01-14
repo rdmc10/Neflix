@@ -19,7 +19,7 @@
      <rect>
       <x>40</x>
       <y>10</y>
-      <width>221</width>
+      <width>371</width>
       <height>21</height>
      </rect>
     </property>
@@ -40,19 +40,25 @@
      <rect>
       <x>40</x>
       <y>40</y>
-      <width>113</width>
+      <width>181</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Search by name</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_searchMovieByCategory">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>232</x>
       <y>40</y>
-      <width>113</width>
+      <width>181</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Search by category</string>
     </property>
    </widget>
    <widget class="QListWidget" name="listWidget_movies">
@@ -60,7 +66,7 @@
      <rect>
       <x>40</x>
       <y>70</y>
-      <width>256</width>
+      <width>371</width>
       <height>192</height>
      </rect>
     </property>
@@ -68,9 +74,9 @@
    <widget class="QPushButton" name="pushButton_preferences">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>280</y>
-      <width>111</width>
+      <x>440</x>
+      <y>80</y>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -81,9 +87,9 @@
    <widget class="QPushButton" name="pushButton_wishlist">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>280</y>
-      <width>111</width>
+      <x>440</x>
+      <y>120</y>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -94,9 +100,9 @@
    <widget class="QPushButton" name="pushButton_recommandations">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>280</y>
-      <width>101</width>
+      <x>440</x>
+      <y>160</y>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -111,7 +117,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

@@ -27,6 +27,9 @@
     <Filter Include="Source Files\GUI">
       <UniqueIdentifier>{c30b8be8-46a2-4db0-87ac-09a33119bb6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\NefixDesign">
+      <UniqueIdentifier>{a0f82157-80e8-436a-a4b8-22b04d24dbbd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ProjectModernCpp.qrc">
@@ -156,5 +159,13 @@
     <QtUic Include="MoviePage.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\NEFLIX DESIGN\neflix_long_logo.png">
+      <Filter>Resource Files\NefixDesign</Filter>
+    </Image>
+    <Image Include="..\..\..\NEFLIX DESIGN\neflix_logo.png">
+      <Filter>Resource Files\NefixDesign</Filter>
+    </Image>
   </ItemGroup>
 </Project>

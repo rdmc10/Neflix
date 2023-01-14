@@ -8,7 +8,6 @@ UserPreferencesWindow::UserPreferencesWindow(const User& user, QWidget *parent) 
     m_user(user)
 
 {
-    qDebug() << m_user.GetId();
     userPreferences->setupUi(this);
     connect(userPreferences->listWidget_movieCategories, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(onCategoriesWidgetDoubleClick(QListWidgetItem*)));
     connect(userPreferences->listWidget_selectedMovieCategories, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(onSelectedCategoriesWidgetDoubleClick(QListWidgetItem*)));

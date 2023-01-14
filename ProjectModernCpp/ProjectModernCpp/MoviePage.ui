@@ -17,9 +17,9 @@
    <widget class="QLabel" name="label_movieName">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>10</y>
-      <width>701</width>
+      <width>711</width>
       <height>41</height>
      </rect>
     </property>
@@ -38,20 +38,20 @@
    <widget class="QTextBrowser" name="textBrowser_movieDescription">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>110</y>
-      <width>231</width>
-      <height>101</height>
+      <x>120</x>
+      <y>100</y>
+      <width>631</width>
+      <height>81</height>
      </rect>
     </property>
    </widget>
    <widget class="QListWidget" name="listWidget_movieCategories">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>110</y>
-      <width>141</width>
-      <height>101</height>
+      <x>580</x>
+      <y>220</y>
+      <width>161</width>
+      <height>171</height>
      </rect>
     </property>
     <property name="font">
@@ -63,10 +63,10 @@
    <widget class="QListWidget" name="listWidget_movieCast">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>110</y>
-      <width>141</width>
-      <height>101</height>
+      <x>220</x>
+      <y>220</y>
+      <width>161</width>
+      <height>171</height>
      </rect>
     </property>
     <property name="font">
@@ -78,10 +78,10 @@
    <widget class="QListWidget" name="listWidget_movieCountries">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>110</y>
-      <width>121</width>
-      <height>101</height>
+      <x>400</x>
+      <y>220</y>
+      <width>161</width>
+      <height>171</height>
      </rect>
     </property>
     <property name="font">
@@ -93,10 +93,10 @@
    <widget class="QPushButton" name="button_like">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>440</y>
-      <width>80</width>
-      <height>18</height>
+      <x>350</x>
+      <y>410</y>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -106,10 +106,10 @@
    <widget class="QListWidget" name="listWidget_movieDirectors">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>270</y>
+      <x>30</x>
+      <y>220</y>
       <width>161</width>
-      <height>101</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="font">
@@ -121,9 +121,9 @@
    <widget class="QLabel" name="label_movieDescription">
     <property name="geometry">
      <rect>
-      <x>46</x>
-      <y>80</y>
-      <width>221</width>
+      <x>30</x>
+      <y>130</y>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -139,95 +139,11 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_movieCategories">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>80</y>
-      <width>141</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Categories</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labe_movieCast">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>80</y>
-      <width>141</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Cast</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_movieCountries">
-    <property name="geometry">
-     <rect>
-      <x>636</x>
-      <y>80</y>
-      <width>111</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Country</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_movieDirectors">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>240</y>
-      <width>161</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Directors</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_movieRating">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>390</y>
+      <y>60</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -247,15 +163,87 @@
    <widget class="QPushButton" name="button_return">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>30</x>
       <y>440</y>
-      <width>80</width>
-      <height>18</height>
+      <width>111</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Return</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>190</y>
+      <width>721</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_movieDirectors">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Directors</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labe_movieCast">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Cast</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_movieCountries">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Country</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_movieCategories">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Categories</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -264,7 +252,7 @@
      <x>0</x>
      <y>0</y>
      <width>785</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

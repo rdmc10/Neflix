@@ -60,8 +60,6 @@ public:
 	void SetCategories(const std::vector<std::string>& categories);
 	void SetDescription(const std::string& description);
 
-	static void ConstructCategoryMapping();
-
 	bool operator<(const Movie& movie);
 
 	friend inline auto createMovieStorage(const std::string& filename);
