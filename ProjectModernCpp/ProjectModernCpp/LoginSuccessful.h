@@ -8,6 +8,7 @@
 #include "MoviePage.h"
 #include "userpreferenceswindow.h"
 #include "ui_LoginSuccessful.h"
+#include "wishlistpage.h"
 
 class LoginSuccessful : public QMainWindow
 {
@@ -28,6 +29,8 @@ private slots:
 
 	// search bar
 	void onSearchBarChange(const QString& string);
+
+	void onWishlistButtonClick();
 
 private:
 	Ui::LoginSuccessfulClass *mainPage;

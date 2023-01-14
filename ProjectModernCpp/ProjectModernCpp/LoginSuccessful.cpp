@@ -11,6 +11,8 @@ LoginSuccessful::LoginSuccessful(const User& user, QWidget* parent)
 
 	connect(mainPage->lineEdit_searchMovie, SIGNAL(textChanged(const QString&)), this, SLOT(onSearchBarChange(const QString&)));
 
+	connect(mainPage->pushButton_wishlist, SIGNAL(clicked()), SLOT(onWishlistButtonClick()));
+
 
 	mainPage->label_username->setText(QString::fromStdString("Username: " + user.GetUsername()));
 
@@ -47,6 +49,13 @@ void LoginSuccessful::onSearchBarChange(const QString& string)
             mainPage->listWidget_movies->addItem(QString::fromStdString(movie));
 
         }
+
+}
+
+void LoginSuccessful::onWishlistButtonClick()
+{
+	WishlistPage* wp = new WishlistPage(this->m_user);
+	wp->show();
 
 }
 

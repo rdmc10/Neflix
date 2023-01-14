@@ -110,6 +110,7 @@
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserPreferences.cpp" />
     <ClCompile Include="userpreferenceswindow.cpp" />
+    <ClCompile Include="wishlistpage.cpp" />
     <QtRcc Include="ProjectModernCpp.qrc" />
     <QtUic Include="LoginSuccessful.ui" />
     <QtUic Include="MoviePage.ui" />
@@ -118,11 +119,13 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="Register.ui" />
     <QtUic Include="userpreferenceswindow.ui" />
+    <QtUic Include="wishlistpage.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cluster.h" />
     <ClInclude Include="CosineSimilarity.h" />
     <ClInclude Include="CSVMovie.h" />
+    <QtMoc Include="wishlistpage.h" />
     <QtMoc Include="MoviePage.h" />
     <ClInclude Include="MovieReview.h" />
     <ClInclude Include="ParseUtil.h" />
