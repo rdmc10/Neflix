@@ -48,7 +48,26 @@ MoviePage::MoviePage(const User& user, CSVMovie movie, QWidget *parent)
 			country.erase(0, 1);
 		moviePage->listWidget_movieCountries->addItem(QString::fromStdString(country));
 	}
+
+
+	using namespace sqlite_orm;
+	auto movieDB = createMovieStorage("database.db");
+    auto userMovieRelationsDB = createUserMovieRelationsDB("database.db");
+	auto movieData = movieDB.select(sql::columns(&CSVMovie::m_movieId)
+		, sql::where(c(&CSVMovie::m_name) == m_movie.m_name));
+	uint32_t movieID = std::get<0>(movieData.at(0));
+	auto userMovieRelations = userMovieRelationsDB.select(sql::columns(&Relations::m_user_id, &Relations::m_movie_id, &Relations::m_isWatched,
+		&Relations::m_isOnWishlist, &Relations::m_isLiked)
+		, sql::where(c(&Relations::m_movie_id) == movieID));
 	
+	if (userMovieRelations.size() != 0) {
+		if (std::get<2>(userMovieRelations[0]) == true) 
+			moviePage->button_watched->setText(QString("Unwatch"));
+		if(std::get<3>(userMovieRelations[0]) == true)
+			moviePage->button_wishlist->setText(QString("Unwish"));
+		if(std::get<4>(userMovieRelations[0]) == true)
+			moviePage->button_like->setText(QString("Unlike"));
+	}
 
 }
 
