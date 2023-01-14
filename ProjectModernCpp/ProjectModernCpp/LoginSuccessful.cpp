@@ -21,7 +21,7 @@ LoginSuccessful::LoginSuccessful(const User& user, QWidget* parent)
 
 void LoginSuccessful::onMovieDoubleClick(QListWidgetItem* item) {
 
-	MoviePage* moviePage = new MoviePage(GetWholeMovieFromDatabaseByName(mainPage->listWidget_movies->currentItem()->text().toStdString()), this);
+	MoviePage* moviePage = new MoviePage(m_user,GetWholeMovieFromDatabaseByName(mainPage->listWidget_movies->currentItem()->text().toStdString()), this);
 	moviePage->show();
 
 

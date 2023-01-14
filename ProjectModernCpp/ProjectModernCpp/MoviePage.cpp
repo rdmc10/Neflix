@@ -1,7 +1,10 @@
 #include "MoviePage.h"
 
-MoviePage::MoviePage(CSVMovie movie, QWidget *parent)
-	: QMainWindow(parent)
+MoviePage::MoviePage(const User& user, CSVMovie movie, QWidget *parent)
+	:
+	m_user(user),
+	m_movie(movie),
+	QMainWindow(parent)
 	, moviePage(new Ui::MoviePageClass())
 {
 	moviePage->setupUi(this);
@@ -55,7 +58,30 @@ void MoviePage::onReturnButtonClick() {
 
 void MoviePage::onLikeButtonClick()
 {
-	// TODO: Add movie to UserPreferences database
+	using namespace sqlite_orm;
+	auto movieDB = createMovieStorage("database.db");
+    auto userMovieRelationsDB = createUserMovieRelationsDB("database.db");
+	auto movieData = movieDB.select(sql::columns(&CSVMovie::m_movieId)
+		, sql::where(c(&CSVMovie::m_name) == m_movie.m_name));
+	uint32_t movieID = std::get<0>(movieData.at(0));
+	auto userMovieRelations = userMovieRelationsDB.select(sql::columns(&Relations::m_user_id, &Relations::m_movie_id, &Relations::m_isWatched,
+		&Relations::m_isOnWishlist, &Relations::m_isLiked)
+		, sql::where(c(&Relations::m_movie_id) == movieID));
+
+	if (userMovieRelations.size() == 0) {
+		Relations r(m_user.GetId(), movieID, true, false, true);
+		userMovieRelationsDB.insert(r);
+	}
+	else {
+		bool isLiked = true;
+		bool fal = false;
+		userMovieRelationsDB.update_all(set(c(&Relations::m_user_id) = m_user.GetId(),
+			c(&Relations::m_movie_id) = movieID,
+			c(&Relations::m_isWatched) = fal,
+			c(&Relations::m_isOnWishlist) = fal,
+			c(&Relations::m_isLiked) = isLiked), sql::where(c(&Relations::m_movie_id) == movieID));
+	}
+
 }
 
 MoviePage::~MoviePage()
