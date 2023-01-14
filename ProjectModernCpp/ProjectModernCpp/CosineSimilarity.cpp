@@ -19,7 +19,7 @@ std::unordered_map<std::string, float> CategoryMapping = {
 	{ "Sci-Fi & Fantasy",					9.5f	},
 	{ "Action & Adventure",					8.5f	},
 	{ "Classic Movies",					   10.5f	},
-	{ "Sports Movies",					   15.5f	},
+	{ "Sports Movies",					   14.25f	},
 	{ "Faith & Spirituality",			   16.0f    },
 	{ "LGBTQ Movies",					   18.5f	},
 	{ "Stand-Up Comedy",					7.0f	},
@@ -77,7 +77,7 @@ std::vector<Movie> CosineSimilarity::GetSimilarMovies(const Movie& movie, const 
 	std::vector<float> normedMovie = ComputeNormMovie(movie);
 	for (const auto& movie : allMovies) {
 		float similarity = ComputeCosineSimilarity(normedMovie, ComputeNormMovie(movie));
-		if (similarity > 0.95f)
+		if (similarity > 0.99999f)
 			similarMovies.emplace_back(movie);
 	}
 	return similarMovies;

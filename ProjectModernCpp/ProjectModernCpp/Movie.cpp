@@ -16,7 +16,7 @@ Movie::Movie()
 
 Movie::Movie(uint32_t id, const Type& type, const std::string& name, const std::vector<std::string>& directors, const std::vector<std::string>& cast, const std::string& country,const std::string& dateAdded, uint16_t releaseDate, const std::string& rating, const std::string& duration,
 	const std::vector<std::string>& categories, const std::string& description)
-	: m_movieId()
+	: m_movieId(id)
 	, m_type(type)
 	, m_name(name)
 	, m_directors(directors)
@@ -42,6 +42,7 @@ Movie::Movie(const Movie& movie)
 	, m_releaseDate(movie.m_releaseDate)
 	, m_rating(movie.m_rating)
 	, m_duration(movie.m_duration)
+	, m_categories(movie.m_categories)
 	, m_description(movie.m_description)
 {
 }
@@ -63,6 +64,7 @@ Movie& Movie::operator=(Movie&& movie)
 	m_releaseDate = movie.GetReleaseDate();
 	m_rating = movie.GetRating();
 	m_duration = movie.GetDuration();
+	m_categories = movie.GetCategories();
 	m_description = movie.GetDescription();
 
 	new(&movie) Movie;
@@ -81,6 +83,7 @@ Movie& Movie::operator=(const Movie& movie)
 	m_releaseDate = movie.GetReleaseDate();
 	m_rating = movie.GetRating();
 	m_duration = movie.GetDuration();
+	m_categories = movie.GetCategories();
 	m_description = movie.GetDescription();
 
 	return *this;

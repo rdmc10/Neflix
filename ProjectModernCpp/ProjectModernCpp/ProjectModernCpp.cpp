@@ -37,11 +37,10 @@ ProjectModernCpp::ProjectModernCpp(QWidget *parent)
     }
 
     std::vector<Movie> allMovies = db.GetMoviesData();
-    Movie movie = allMovies[0];
-    //TODO : FIX
+    Movie movie = allMovies[173];
     std::vector<Movie> similarMovies = CosineSimilarity::GetSimilarMovies(movie, allMovies);
-    for (const Movie& mv : similarMovies)
-        qDebug() << mv.GetMovieID();
+    for (const auto& movie : similarMovies)
+        qDebug() << movie.GetMovieID();
 }
 
 ProjectModernCpp::~ProjectModernCpp()

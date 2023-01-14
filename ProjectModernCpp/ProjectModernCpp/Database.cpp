@@ -84,7 +84,6 @@ std::vector<Movie> database::GetMoviesData()
 
         moviesData.push_back(tmp);
     }
-    qDebug() << moviesData.size();
     return moviesData;
 }
 
