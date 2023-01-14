@@ -24,6 +24,8 @@ private slots:
 
 	void onReturnButtonClick();
 	void onLikeButtonClick();
+	void onWishlistButtonClick();
+	void onWatchedButtonClick();
 
 private:
 	Ui::MoviePageClass *moviePage;

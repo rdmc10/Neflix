@@ -11,6 +11,8 @@ MoviePage::MoviePage(const User& user, CSVMovie movie, QWidget *parent)
 
 	connect(moviePage->button_return, SIGNAL(clicked()), SLOT(onReturnButtonClick()));
 	connect(moviePage->button_like, SIGNAL(clicked()), SLOT(onLikeButtonClick()));
+	connect(moviePage->button_wishlist, SIGNAL(clicked()), SLOT(onWishlistButtonClick()));
+	connect(moviePage->button_watched, SIGNAL(clicked()), SLOT(onWatchedButtonClick()));
 
 	moviePage->label_movieName->setText(QString::fromStdString(movie.m_name + " ( " + movie.m_type + " - " + std::to_string(movie.m_releaseDate) + " )"));
 	moviePage->label_movieName->setAlignment(Qt::AlignCenter);
@@ -69,19 +71,79 @@ void MoviePage::onLikeButtonClick()
 		, sql::where(c(&Relations::m_movie_id) == movieID));
 
 	if (userMovieRelations.size() == 0) {
-		Relations r(m_user.GetId(), movieID, true, false, true);
+		Relations r(m_user.GetId(), movieID, false, false, true);
 		userMovieRelationsDB.insert(r);
+		moviePage->button_like->setText(QString("Unlike"));
 	}
 	else {
 		bool isLiked = true;
-		bool fal = false;
-		userMovieRelationsDB.update_all(set(c(&Relations::m_user_id) = m_user.GetId(),
-			c(&Relations::m_movie_id) = movieID,
-			c(&Relations::m_isWatched) = fal,
-			c(&Relations::m_isOnWishlist) = fal,
-			c(&Relations::m_isLiked) = isLiked), sql::where(c(&Relations::m_movie_id) == movieID));
+		bool watched = std::get<2>(userMovieRelations[0]);
+		bool wishlist = std::get<3>(userMovieRelations[0]);
+		if (std::get<4>(userMovieRelations[0]) == true) {
+			bool fal = false;
+			userMovieRelationsDB.update_all(set(c(&Relations::m_user_id) = m_user.GetId(),
+				c(&Relations::m_movie_id) = movieID,
+				c(&Relations::m_isWatched) = watched,
+				c(&Relations::m_isOnWishlist) = wishlist,
+				c(&Relations::m_isLiked) = fal), sql::where(c(&Relations::m_movie_id) == movieID));
+			moviePage->button_like->setText(QString("Like"));
+		}
+		else {
+			userMovieRelationsDB.update_all(set(c(&Relations::m_user_id) = m_user.GetId(),
+				c(&Relations::m_movie_id) = movieID,
+				c(&Relations::m_isWatched) = watched,
+				c(&Relations::m_isOnWishlist) = wishlist,
+				c(&Relations::m_isLiked) = isLiked), sql::where(c(&Relations::m_movie_id) == movieID));
+			moviePage->button_like->setText(QString("Unlike"));
+		}
+	}
+}
+
+void MoviePage::onWishlistButtonClick()
+{
+	using namespace sqlite_orm;
+
+	auto movieDB = createMovieStorage("database.db");
+    auto userMovieRelationsDB = createUserMovieRelationsDB("database.db");
+	auto movieData = movieDB.select(sql::columns(&CSVMovie::m_movieId)
+		, sql::where(c(&CSVMovie::m_name) == m_movie.m_name));
+	uint32_t movieID = std::get<0>(movieData.at(0));
+	auto userMovieRelations = userMovieRelationsDB.select(sql::columns(&Relations::m_user_id, &Relations::m_movie_id, &Relations::m_isWatched,
+		&Relations::m_isOnWishlist, &Relations::m_isLiked)
+		, sql::where(c(&Relations::m_movie_id) == movieID));
+
+	if (userMovieRelations.size() == 0) {
+		Relations r(m_user.GetId(), movieID, false, true, false);
+		userMovieRelationsDB.insert(r);
+		moviePage->button_wishlist->setText(QString("Unwish"));
+	}
+	else {
+		bool isLiked = std::get<4>(userMovieRelations[0]);
+		bool watched = std::get<2>(userMovieRelations[0]);
+		bool wishlist = true;
+		if (std::get<3>(userMovieRelations[0]) == true) {
+			bool fal = false;
+			userMovieRelationsDB.update_all(set(c(&Relations::m_user_id) = m_user.GetId(),
+				c(&Relations::m_movie_id) = movieID,
+				c(&Relations::m_isWatched) = watched,
+				c(&Relations::m_isOnWishlist) = fal,
+				c(&Relations::m_isLiked) = isLiked), sql::where(c(&Relations::m_movie_id) == movieID));
+			moviePage->button_wishlist->setText(QString("Wishlist"));
+		}
+		else {
+			userMovieRelationsDB.update_all(set(c(&Relations::m_user_id) = m_user.GetId(),
+				c(&Relations::m_movie_id) = movieID,
+				c(&Relations::m_isWatched) = watched,
+				c(&Relations::m_isOnWishlist) = wishlist,
+				c(&Relations::m_isLiked) = isLiked), sql::where(c(&Relations::m_movie_id) == movieID));
+			moviePage->button_wishlist->setText(QString("Unwish"));
+		}
 	}
 
+}
+
+void MoviePage::onWatchedButtonClick()
+{
 }
 
 MoviePage::~MoviePage()

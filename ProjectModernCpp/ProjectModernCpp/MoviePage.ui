@@ -90,19 +90,6 @@
      </font>
     </property>
    </widget>
-   <widget class="QPushButton" name="button_like">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>410</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Like</string>
-    </property>
-   </widget>
    <widget class="QListWidget" name="listWidget_movieDirectors">
     <property name="geometry">
      <rect>
@@ -173,7 +160,7 @@
      <string>Return</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -245,6 +232,39 @@
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>400</y>
+      <width>291</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="button_like">
+       <property name="text">
+        <string>Like</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_watched">
+       <property name="text">
+        <string>Watched</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_wishlist">
+       <property name="text">
+        <string>Wishlist</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -252,7 +272,7 @@
      <x>0</x>
      <y>0</y>
      <width>785</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
