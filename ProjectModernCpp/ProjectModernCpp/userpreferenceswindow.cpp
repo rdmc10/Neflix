@@ -49,6 +49,20 @@ UserPreferencesWindow::UserPreferencesWindow(const User& user, QWidget *parent) 
     auto userPrefData = userPrefDB.select(sql::columns(&Preferences::m_user_id, &Preferences::m_preferencesMoviesLiked, &Preferences::m_preferencesRatingsLiked, &Preferences::m_preferencesCategoriesLiked, &Preferences::m_preferencesTypeLiked)
         , sql::where(c(&Preferences::m_user_id) == m_user.GetId()));
 
+
+    auto movieDB = createMovieStorage("database.db");
+    auto userMovieRelationsDB = createUserMovieRelationsDB("database.db");
+    auto userMovieRelations = userMovieRelationsDB.select(sql::columns(&Relations::m_user_id, &Relations::m_movie_id, &Relations::m_isWatched,
+        &Relations::m_isLiked)
+        , sql::where(c(&Relations::m_user_id) == m_user.GetId()));
+
+    for (const auto& relation : userMovieRelations) {
+        if (std::get<3>(relation)) {
+            auto movieData = movieDB.select(sql::columns(&CSVMovie::m_name), sql::where(c(&CSVMovie::m_movieId) == std::get<1>(relation)));
+            userPreferences->listWidget_selectedMovies->addItem(QString::fromStdString(std::get<0>(movieData[0])));
+        }
+    }
+
     userPref.m_preferencesMoviesLiked = std::get<1>(userPrefData.at(0));
     userPref.m_preferencesRatingsLiked = std::get<2>(userPrefData.at(0));
     userPref.m_preferencesCategoriesLiked = std::get<3>(userPrefData.at(0));
@@ -66,9 +80,9 @@ UserPreferencesWindow::UserPreferencesWindow(const User& user, QWidget *parent) 
     for (int i = 0; i < likedRatings.size(); i++)
         if (likedRatings[i] != "")
             userPreferences->listWidget_selectedMovieRatings->addItem(QString::fromStdString(likedRatings[i]));
-    for (int i = 0; i < likedMovies.size(); i++)
-        if (likedMovies[i] != "")
-            userPreferences->listWidget_selectedMovies->addItem(QString::fromStdString(likedMovies[i]));
+  //  for (int i = 0; i < likedMovies.size(); i++)
+       // if (likedMovies[i] != "")
+           // userPreferences->listWidget_selectedMovies->addItem(QString::fromStdString(likedMovies[i]));
 
     if (likedType == "Both") {
         userPreferences->checkBox_Movie->setChecked(true);
@@ -116,9 +130,20 @@ void UserPreferencesWindow::onMoviesWidgetDoubleClick(QListWidgetItem* item)
 
 void UserPreferencesWindow::onSelectedMoviesWidgetDoubleClick(QListWidgetItem* item)
 {
-    userPreferences->listWidget_selectedMovies->takeItem(userPreferences->listWidget_selectedMovies->row(item));
-    //MoviePage* moviePage = new MoviePage(GetWholeMovieFromDatabaseByName(userPreferences->listWidget_selectedMovies->currentItem()->text().toStdString()), this);
-    //moviePage->show();
+    //userPreferences->listWidget_selectedMovies->takeItem(userPreferences->listWidget_selectedMovies->row(item));
+
+    std::string movieName = userPreferences->listWidget_selectedMovies->currentItem()->text().toStdString();
+
+    using namespace sqlite_orm;
+    auto movieDB = createMovieStorage("database.db");
+    auto moviesFromDb = movieDB.select(sql::columns(&CSVMovie::m_movieId, &CSVMovie::m_type, &CSVMovie::m_name, &CSVMovie::m_directors, &CSVMovie::m_cast, &CSVMovie::m_country,
+        &CSVMovie::m_dateAdded, &CSVMovie::m_releaseDate, &CSVMovie::m_rating, &CSVMovie::m_duration, &CSVMovie::m_categories, &CSVMovie::m_description)
+        , sql::where(c(&CSVMovie::m_name) == movieName));
+
+    MoviePage* mw = new MoviePage(m_user, CSVMovie(std::get<0>(moviesFromDb[0]), std::get<1>(moviesFromDb[0]), std::get<2>(moviesFromDb[0]), std::get<3>(moviesFromDb[0]), std::get<4>(moviesFromDb[0]), std::get<5>(moviesFromDb[0])
+        , std::get<6>(moviesFromDb[0]), std::get<7>(moviesFromDb[0]), std::get<8>(moviesFromDb[0]), std::get<9>(moviesFromDb[0]), std::get<10>(moviesFromDb[0]), std::get<11>(moviesFromDb[0])), this);
+    mw->show();
+   
 }
 
 void UserPreferencesWindow::onSaveButtonClick()

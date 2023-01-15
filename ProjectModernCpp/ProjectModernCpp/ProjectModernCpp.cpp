@@ -1,6 +1,5 @@
 #include "ProjectModernCpp.h"
 #include "userpreferenceswindow.h"
-#include "CosineSimilarity.h"
 
 bool is_number(const std::string& s)
 {
@@ -36,12 +35,8 @@ ProjectModernCpp::ProjectModernCpp(QWidget *parent)
         db.PopulateStorage(allMovies);
     }
 
-    std::vector<Movie> allMovies = db.GetMoviesData();
-    Movie movie = allMovies[173];
-    std::vector<Movie> similarMovies = CosineSimilarity::GetSimilarMovies(movie, allMovies);
-    for (const auto& movie : similarMovies)
-        qDebug() << movie.GetMovieID();
-}
+   
+} 
 
 ProjectModernCpp::~ProjectModernCpp()
 {

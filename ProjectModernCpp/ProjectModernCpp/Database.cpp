@@ -1,5 +1,4 @@
 #include "Database.h"
-#include <qmainwindow.h>
 #include <string>
 
 

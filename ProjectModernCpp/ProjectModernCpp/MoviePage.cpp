@@ -1,4 +1,5 @@
 #include "MoviePage.h"
+#include "CosineSimilarity.h"
 
 MoviePage::MoviePage(const User& user, CSVMovie movie, QWidget *parent)
 	:
@@ -13,6 +14,8 @@ MoviePage::MoviePage(const User& user, CSVMovie movie, QWidget *parent)
 	connect(moviePage->button_like, SIGNAL(clicked()), SLOT(onLikeButtonClick()));
 	connect(moviePage->button_wishlist, SIGNAL(clicked()), SLOT(onWishlistButtonClick()));
 	connect(moviePage->button_watched, SIGNAL(clicked()), SLOT(onWatchedButtonClick()));
+
+	connect(moviePage->listWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(onMovieRecommandationClick(QListWidgetItem*)));
 
 	moviePage->label_movieName->setText(QString::fromStdString(movie.m_name + " ( " + movie.m_type + " - " + std::to_string(movie.m_releaseDate) + " )"));
 	moviePage->label_movieName->setAlignment(Qt::AlignCenter);
@@ -49,16 +52,46 @@ MoviePage::MoviePage(const User& user, CSVMovie movie, QWidget *parent)
 		moviePage->listWidget_movieCountries->addItem(QString::fromStdString(country));
 	}
 
+	database db;
 
 	using namespace sqlite_orm;
 	auto movieDB = createMovieStorage("database.db");
     auto userMovieRelationsDB = createUserMovieRelationsDB("database.db");
 	auto movieData = movieDB.select(sql::columns(&CSVMovie::m_movieId)
 		, sql::where(c(&CSVMovie::m_name) == m_movie.m_name));
+
 	uint32_t movieID = std::get<0>(movieData.at(0));
 	auto userMovieRelations = userMovieRelationsDB.select(sql::columns(&Relations::m_user_id, &Relations::m_movie_id, &Relations::m_isWatched,
 		&Relations::m_isOnWishlist, &Relations::m_isLiked)
 		, sql::where(c(&Relations::m_movie_id) == movieID));
+
+	auto moviesFromDb = movieDB.select(sql::columns(&CSVMovie::m_movieId, &CSVMovie::m_type, &CSVMovie::m_name, &CSVMovie::m_directors, &CSVMovie::m_cast, &CSVMovie::m_country,
+		&CSVMovie::m_dateAdded, &CSVMovie::m_releaseDate, &CSVMovie::m_rating, &CSVMovie::m_duration, &CSVMovie::m_categories, &CSVMovie::m_description)
+		, sql::where(c(&CSVMovie::m_name) == m_movie.m_name));
+	std::vector<Movie> moviesData;
+
+
+		Movie tmp(
+			std::get<0>(moviesFromDb[0])
+			, std::get<1>(moviesFromDb[0]) == "Movie" ? Movie::Type::Movie : Movie::Type::Show
+			, std::get<2>(moviesFromDb[0])
+			, ParseString(std::get<3>(moviesFromDb[0]))
+			, ParseString(std::get<4>(moviesFromDb[0]))
+			, std::get<5>(moviesFromDb[0])
+			, std::get<6>(moviesFromDb[0])
+			, std::get<7>(moviesFromDb[0])
+			, std::get<8>(moviesFromDb[0])
+			, std::get<9>(moviesFromDb[0])
+			, ParseString(std::get<10>(moviesFromDb[0]))
+			, std::get<11>(moviesFromDb[0])
+		);
+	
+
+	std::vector<Movie> movies = CosineSimilarity::GetSimilarMovies(tmp, db.GetMoviesData());
+
+	for (uint32_t i = 0; i < 5 % movies.size(); ++i) {
+		moviePage->listWidget->addItem(QString::fromStdString(movies[i].GetName())); // recommendations
+	}
 	
 	if (userMovieRelations.size() != 0) {
 		if (std::get<2>(userMovieRelations[0]) == true) 
@@ -202,6 +235,12 @@ void MoviePage::onWatchedButtonClick()
 			moviePage->button_watched->setText(QString("Unwatch"));
 		}
 	}
+}
+
+void MoviePage::onMovieRecommandationClick(QListWidgetItem* item)
+{
+	MoviePage* mp = new MoviePage(m_user, GetWholeMovieFromDatabaseByName(moviePage->listWidget->currentItem()->text().toStdString()), this);
+	mp->show();
 }
 
 MoviePage::~MoviePage()

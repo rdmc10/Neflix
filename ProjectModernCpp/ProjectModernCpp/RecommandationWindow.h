@@ -5,9 +5,9 @@
 #include "User.h"
 #include "Movie.h"
 #include "CSVMovie.h"
+#include "CosineSimilarity.h"
 #include "Database.h"
 #include "MoviePage.h"
-#include "CosineSimilarity.h"
 
 namespace Ui {
 class RecommandationWindow;

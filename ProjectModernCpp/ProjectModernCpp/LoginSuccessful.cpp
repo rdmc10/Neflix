@@ -20,8 +20,6 @@ LoginSuccessful::LoginSuccessful(const User& user, QWidget* parent)
 	mainPage->label_username->setText(QString::fromStdString("Username: " + user.GetUsername()));
 
 
-	
-
 }
 
 void LoginSuccessful::onMovieDoubleClick(QListWidgetItem* item) {

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef cosine_h
+#define cosine_h
 #include <vector>
 #include <unordered_map>
 #include "Movie.h"
@@ -21,4 +22,4 @@ private:
 private:
 	std::vector<Cluster> m_clusters;
 };
-
+#endif

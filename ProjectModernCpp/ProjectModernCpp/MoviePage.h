@@ -1,6 +1,9 @@
-#pragma once
+#ifndef PAGE_H
+#define PAGE_H
 
 #include <QMainWindow>
+#include "Movie.h"
+#include "Database.h"
 #include "CSVMovie.h"
 #include "ui_MoviePage.h"
 #include <string>
@@ -26,6 +29,8 @@ private slots:
 	void onLikeButtonClick();
 	void onWishlistButtonClick();
 	void onWatchedButtonClick();
+
+	void onMovieRecommandationClick(QListWidgetItem* item);
 
 private:
 	Ui::MoviePageClass *moviePage;
@@ -76,3 +81,4 @@ inline auto createUserMovieRelationsDB(const std::string& filename)
 }
 
 using UserMovieDatabase = decltype(createUserMovieRelationsDB(""));
+#endif 

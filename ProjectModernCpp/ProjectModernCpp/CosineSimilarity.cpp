@@ -1,5 +1,4 @@
 #include "CosineSimilarity.h"
-#include <qmainwindow.h>
 
 std::unordered_map<std::string, float> CategoryMapping = {
 	{ "Movies",								0.0f	},

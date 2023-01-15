@@ -131,25 +131,12 @@
      <rect>
       <x>40</x>
       <y>40</y>
-      <width>181</width>
+      <width>371</width>
       <height>20</height>
      </rect>
     </property>
     <property name="placeholderText">
      <string>Search by name</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_searchMovieByCategory">
-    <property name="geometry">
-     <rect>
-      <x>232</x>
-      <y>40</y>
-      <width>181</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Search by category</string>
     </property>
    </widget>
    <widget class="QListWidget" name="listWidget_movies">
@@ -206,7 +193,7 @@
      <rect>
       <x>460</x>
       <y>10</y>
-      <width>101</width>
+      <width>111</width>
       <height>91</height>
      </rect>
     </property>
@@ -318,7 +305,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
