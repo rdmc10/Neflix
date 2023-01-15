@@ -17,7 +17,7 @@ public:
 	~Register();
 
 private:
-
+	bool validEmail(const std::string& email);
 	User GetRegisterData();
 
 private slots:

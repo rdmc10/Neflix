@@ -3,6 +3,7 @@
 #include <string>
 #include "Movie.h"
 #include "userpreferenceswindow.h"
+#include <regex>
 
 Register::Register(QWidget *parent)
 	: QMainWindow(parent), registerWindow(new Ui::RegisterClass)
@@ -15,6 +16,12 @@ Register::Register(QWidget *parent)
 Register::~Register()
 {
 	delete registerWindow;
+}
+
+bool Register::validEmail(const std::string& email)
+{
+	const std::regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+	return regex_match(email, pattern);
 }
 
 User Register::GetRegisterData()
@@ -48,7 +55,13 @@ void Register::registerButtonClicked()
 	if (userFromDatabase.GetUsername() != user.GetUsername() && userFromDatabase.GetEmail() != user.GetEmail()) {
 			newUser = true;
 	}
-	
+
+	if (!validEmail(registerWindow->fieldEmail->text().toStdString())) {
+		QMessageBox::warning(this, "Warning", "Invalid email!");
+		registerWindow->fieldEmail->clear();
+		return;
+	}
+
 	if (newUser) {
 		auto id = userStorage.insert(user);
 
@@ -65,6 +78,7 @@ void Register::registerButtonClicked()
 	}
 	else {
 		QMessageBox::warning(this, "Warning", "An account with this username or email already exists!");
+		registerWindow->fieldUsername->clear();
 	}
 
 }
