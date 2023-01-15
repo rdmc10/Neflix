@@ -6,6 +6,7 @@ WishlistPage::WishlistPage(const User& user, QWidget *parent) :
     ui(new Ui::WishlistPage())
 {
     ui->setupUi(this);
+	connect(ui->listWidget_wishlistMovies, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(onMovieDoubleClick(QListWidgetItem*)));
 	connect(ui->pushButton_close, SIGNAL(clicked()), SLOT(onCloseButtonClick()));
 
 	using namespace sqlite_orm;
@@ -23,6 +24,13 @@ WishlistPage::WishlistPage(const User& user, QWidget *parent) :
 	}
 }
 
+void WishlistPage::onMovieDoubleClick(QListWidgetItem* item) {
+
+	MoviePage* mp = new MoviePage(m_user, GetWholeMovieFromDatabaseByName(ui->listWidget_wishlistMovies->currentItem()->text().toStdString()), this);
+	mp->show();
+
+}
+
 void WishlistPage::onCloseButtonClick() {
 	hide();
 	delete ui;
@@ -30,5 +38,5 @@ void WishlistPage::onCloseButtonClick() {
 
 WishlistPage::~WishlistPage()
 {
-    delete ui;
+    delete this;
 }

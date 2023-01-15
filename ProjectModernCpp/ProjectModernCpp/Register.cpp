@@ -59,6 +59,7 @@ void Register::registerButtonClicked()
 		UserPreferencesWindow* upw = new UserPreferencesWindow(user);
 		LoginSuccessful* mainPage = new LoginSuccessful(user);
 		hide();
+		delete registerWindow;
 		mainPage->show();
 		upw->show();
 	}
@@ -72,7 +73,6 @@ void Register::cancelButtonClicked()
 {
 	ProjectModernCpp *mainWindow = new ProjectModernCpp();
 	hide();
-	// TODO : delete current window
 	
 	mainWindow->show();
 	delete this;

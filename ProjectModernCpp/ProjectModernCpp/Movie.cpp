@@ -2,9 +2,6 @@
 #include "Movie.h"
 
 
-//TODO: remove
-#include "qmainwindow.h"
-
 Movie::Movie()
 	: m_type(Movie::Type::Movie)
 	, m_name("")

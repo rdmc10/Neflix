@@ -44,7 +44,6 @@ private:
 	std::string m_email;
 	std::string m_birthDate;
 
-	//TODO: categories/favorite actors etc
 };
 
 

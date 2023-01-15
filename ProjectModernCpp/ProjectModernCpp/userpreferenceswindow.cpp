@@ -177,7 +177,6 @@ void UserPreferencesWindow::onSaveButtonClick()
     userPreferences->listWidget_selectedMovieRatings->clear();
     userPreferences->listWidget_selectedMovies->clear();
 
-    // TODO: Insert saved data (likedCategories, likedRatings, likedMovies, likedType) into the database for user preferences
 
     hide();
     delete userPreferences;
@@ -203,6 +202,6 @@ void UserPreferencesWindow::onSearchBarEdit(const QString& string)
 
 UserPreferencesWindow::~UserPreferencesWindow()
 {
-    delete userPreferences;
+    delete this;
 }
 

@@ -73,7 +73,8 @@ MoviePage::MoviePage(const User& user, CSVMovie movie, QWidget *parent)
 
 void MoviePage::onReturnButtonClick() {
 
-	delete this;
+	hide();
+	delete moviePage;
 
 }
 
@@ -205,7 +206,7 @@ void MoviePage::onWatchedButtonClick()
 
 MoviePage::~MoviePage()
 {
-	delete moviePage;
+	delete this;
 }
 
 

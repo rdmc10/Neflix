@@ -1,5 +1,6 @@
 #include "recommandationwindow.h"
 #include "ui_recommandationwindow.h"
+#include "MoviePage.h"
 
 
 
@@ -11,6 +12,7 @@ RecommandationWindow::RecommandationWindow(const User& user, QWidget *parent) :
     ui->setupUi(this);
 
 	database db;
+	connect(ui->listWidget_recommandations, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(onMovieDoubleClick(QListWidgetItem*)));
     connect(ui->pushButton_return, SIGNAL(clicked()), SLOT(onReturnClick()));
 
     using namespace sqlite_orm;
@@ -44,20 +46,18 @@ RecommandationWindow::RecommandationWindow(const User& user, QWidget *parent) :
 			);
 	
 			std::vector<Movie> movies = CosineSimilarity::GetSimilarMovies(tmp, db.GetMoviesData());
-			for (uint32_t i = 0; i < 5; ++i) {
-				std::string categories = " ( ";
-				if (movies[i].GetCategories().size() > 1) {
-					for (const auto& category : movies[i].GetCategories())
-						categories += (category + ", ");
-					categories.erase(categories.size() - 3, 2);
-				}
-				else 
-					categories += movies[i].GetCategories().at(0);
-				categories += " )";
-				ui->listWidget_recommandations->addItem(QString::fromStdString(movies[i].GetName() + categories));
+			for (uint32_t i = 0; i < 5 % movies.size(); ++i) {
+				ui->listWidget_recommandations->addItem(QString::fromStdString(movies[i].GetName()));
 			}
 		}
 	}
+}
+
+void RecommandationWindow::onMovieDoubleClick(QListWidgetItem* item) {
+
+	MoviePage* mp = new MoviePage(m_user, GetWholeMovieFromDatabaseByName(ui->listWidget_recommandations->currentItem()->text().toStdString()), this);
+	mp->show();
+
 }
 
 void RecommandationWindow::onReturnClick() {
@@ -67,5 +67,5 @@ void RecommandationWindow::onReturnClick() {
 
 RecommandationWindow::~RecommandationWindow()
 {
-    delete ui;
+    delete this;
 }

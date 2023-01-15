@@ -27,6 +27,7 @@ private:
 
 private slots:
     void onReturnClick();
+    void onMovieDoubleClick(QListWidgetItem* item);
 };
 
 #endif // RECOMMANDATIONWINDOW_H

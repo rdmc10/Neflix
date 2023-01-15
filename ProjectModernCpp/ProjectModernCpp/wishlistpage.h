@@ -25,6 +25,8 @@ private:
 private slots:
     void onCloseButtonClick();
 
+    void onMovieDoubleClick(QListWidgetItem* item);
+
 };
 
 #endif // WISHLISTPAGE_H

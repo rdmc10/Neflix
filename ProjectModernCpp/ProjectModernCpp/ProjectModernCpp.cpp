@@ -51,11 +51,7 @@ ProjectModernCpp::~ProjectModernCpp()
 void ProjectModernCpp::registerButtonClicked()
 {
     Register *registerWindow = new Register();
-    hide();
-    // TODO : free memory for current window
-    //UserPreferencesWindow* upw = new UserPreferencesWindow();
-    //hide();
-    //upw->show();
+    close();
     registerWindow->show();
 }
 
@@ -69,9 +65,7 @@ void ProjectModernCpp::loginButtonClicked()
 
     if (user.GetPassword() == password.toStdString() && user.GetUsername() == username.toStdString()) {
         LoginSuccessful* loginSuccessful = new LoginSuccessful(user, this);
-        hide();
-        //MoviePage* moviePage = new MoviePage(GetWholeMovieFromDatabaseByName("The Great British Baking Show"), this);
-        //moviePage->show();
+        close();
         loginSuccessful->show();
     }
     else {

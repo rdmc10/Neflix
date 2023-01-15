@@ -57,7 +57,7 @@ void LoginSuccessful::onSearchBarChange(const QString& string)
 
 void LoginSuccessful::onWishlistButtonClick()
 {
-	WishlistPage* wp = new WishlistPage(this->m_user);
+	WishlistPage* wp = new WishlistPage(this->m_user, nullptr);
 	wp->show();
 
 }
