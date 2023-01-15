@@ -43,11 +43,12 @@ RecommandationWindow::RecommandationWindow(const User& user, QWidget *parent) :
 				, ParseString(std::get<10>(moviesFromDb[0]))
 				, std::get<11>(moviesFromDb[0])
 			);
-	
-			std::vector<Movie> movies = CosineSimilarity::GetSimilarMovies(tmp, db.GetMoviesData());
-			for (uint32_t i = 0; i < 5 % movies.size(); ++i) {
-				ui->listWidget_recommandations->addItem(QString::fromStdString(movies[i].GetName()));
-			}
+
+			srand(std::time(NULL));
+            std::vector<Movie> movies = CosineSimilarity::GetSimilarMovies(tmp, db.GetMoviesData());
+            for (uint32_t i = 0; i < 5 % movies.size(); ++i) {
+                ui->listWidget_recommandations->addItem(QString::fromStdString(movies[rand() % movies.size()].GetName()));
+            }
 		}
 	}
 }
