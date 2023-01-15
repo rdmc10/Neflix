@@ -63,7 +63,7 @@ MoviePage::MoviePage(const User& user, CSVMovie movie, QWidget *parent)
 	uint32_t movieID = std::get<0>(movieData.at(0));
 	auto userMovieRelations = userMovieRelationsDB.select(sql::columns(&Relations::m_user_id, &Relations::m_movie_id, &Relations::m_isWatched,
 		&Relations::m_isOnWishlist, &Relations::m_isLiked)
-		, sql::where(c(&Relations::m_movie_id) == movieID));
+		, sql::where(c(&Relations::m_movie_id) == movieID and c(&Relations::m_user_id) == m_user.GetId()));
 
 	auto moviesFromDb = movieDB.select(sql::columns(&CSVMovie::m_movieId, &CSVMovie::m_type, &CSVMovie::m_name, &CSVMovie::m_directors, &CSVMovie::m_cast, &CSVMovie::m_country,
 		&CSVMovie::m_dateAdded, &CSVMovie::m_releaseDate, &CSVMovie::m_rating, &CSVMovie::m_duration, &CSVMovie::m_categories, &CSVMovie::m_description)
