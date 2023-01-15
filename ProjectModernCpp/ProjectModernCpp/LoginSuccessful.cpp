@@ -1,4 +1,5 @@
 #include "LoginSuccessful.h"
+#include "recommandationwindow.h"
 
 LoginSuccessful::LoginSuccessful(const User& user, QWidget* parent)
 	: QMainWindow(parent), mainPage(new Ui::LoginSuccessfulClass), m_user(user)
@@ -12,6 +13,8 @@ LoginSuccessful::LoginSuccessful(const User& user, QWidget* parent)
 	connect(mainPage->lineEdit_searchMovie, SIGNAL(textChanged(const QString&)), this, SLOT(onSearchBarChange(const QString&)));
 
 	connect(mainPage->pushButton_wishlist, SIGNAL(clicked()), SLOT(onWishlistButtonClick()));
+
+	connect(mainPage->pushButton_recommandations, SIGNAL(clicked()), SLOT(onRecommandationClick()));
 
 
 	mainPage->label_username->setText(QString::fromStdString("Username: " + user.GetUsername()));
@@ -56,6 +59,13 @@ void LoginSuccessful::onWishlistButtonClick()
 {
 	WishlistPage* wp = new WishlistPage(this->m_user);
 	wp->show();
+
+}
+
+void LoginSuccessful::onRecommandationClick()
+{
+	RecommandationWindow* rw = new RecommandationWindow(this->m_user);
+	rw->show();
 
 }
 

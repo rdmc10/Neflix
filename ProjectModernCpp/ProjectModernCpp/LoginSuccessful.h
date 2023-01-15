@@ -32,6 +32,8 @@ private slots:
 
 	void onWishlistButtonClick();
 
+	void onRecommandationClick();
+
 private:
 	Ui::LoginSuccessfulClass *mainPage;
 

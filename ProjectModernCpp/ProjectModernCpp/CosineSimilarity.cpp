@@ -71,11 +71,12 @@ std::unordered_map<std::string, float> RatingMapping = {
 	{ "TV-Y7-FV",	 3.0f }
 };
 
-std::vector<Movie> CosineSimilarity::GetSimilarMovies(const Movie& movie, const std::vector<Movie>& allMovies)
+std::vector<Movie> CosineSimilarity::GetSimilarMovies(const Movie& userMovie, const std::vector<Movie>& allMovies)
 {
 	std::vector<Movie> similarMovies;
-	std::vector<float> normedMovie = ComputeNormMovie(movie);
+	std::vector<float> normedMovie = ComputeNormMovie(userMovie);
 	for (const auto& movie : allMovies) {
+		if (movie.GetMovieID() == userMovie.GetMovieID())continue;
 		float similarity = ComputeCosineSimilarity(normedMovie, ComputeNormMovie(movie));
 		if (similarity > 0.99999f)
 			similarMovies.emplace_back(movie);

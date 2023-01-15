@@ -106,7 +106,7 @@
     <ClCompile Include="MovieReview.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="ProjectModernCpp.cpp" />
-    <ClCompile Include="RecommandationWindow.cpp" />
+    <ClCompile Include="recommandationwindow.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserPreferences.cpp" />
@@ -118,7 +118,7 @@
     <QtUic Include="ProjectModernCpp.ui" />
     <QtMoc Include="ProjectModernCpp.h" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="RecommandationWindow.ui" />
+    <QtUic Include="recommandationwindow.ui" />
     <QtUic Include="Register.ui" />
     <QtUic Include="userpreferenceswindow.ui" />
     <QtUic Include="wishlistpage.ui" />
@@ -131,7 +131,7 @@
     <QtMoc Include="MoviePage.h" />
     <ClInclude Include="MovieReview.h" />
     <ClInclude Include="ParseUtil.h" />
-    <QtMoc Include="RecommandationWindow.h" />
+    <QtMoc Include="recommandationwindow.h" />
     <ClInclude Include="UserPreferences.h" />
     <QtMoc Include="userpreferenceswindow.h" />
     <QtMoc Include="LoginSuccessful.h" />

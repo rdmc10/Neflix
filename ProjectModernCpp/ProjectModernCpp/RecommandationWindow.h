@@ -1,20 +1,32 @@
-#pragma once
+#ifndef RECOMMANDATIONWINDOW_H
+#define RECOMMANDATIONWINDOW_H
 
-#include <QMainWindow>
-#include "ui_RecommandationWindow.h"
+#include <QWidget>
+#include "User.h"
+#include "Movie.h"
+#include "CSVMovie.h"
+#include "Database.h"
+#include "MoviePage.h"
+#include "CosineSimilarity.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class RecommandationWindowClass; };
-QT_END_NAMESPACE
+namespace Ui {
+class RecommandationWindow;
+}
 
-class RecommandationWindow : public QMainWindow
+class RecommandationWindow : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	RecommandationWindow(QWidget *parent = nullptr);
-	~RecommandationWindow();
+    explicit RecommandationWindow(const User& user, QWidget *parent = nullptr);
+    ~RecommandationWindow();
 
 private:
-	Ui::RecommandationWindowClass *ui;
+    Ui::RecommandationWindow *ui;
+    User m_user;
+
+private slots:
+    void onReturnClick();
 };
+
+#endif // RECOMMANDATIONWINDOW_H

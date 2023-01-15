@@ -88,6 +88,9 @@
     <ClCompile Include="wishlistpage.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="recommandationwindow.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -151,6 +154,9 @@
     <QtMoc Include="wishlistpage.h">
       <Filter>Header Files\GUI</Filter>
     </QtMoc>
+    <QtMoc Include="recommandationwindow.h">
+      <Filter>Header Files\GUI</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Register.ui">
@@ -166,6 +172,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="wishlistpage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="recommandationwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

@@ -8,6 +8,7 @@
 #include "User.h"
 #include "CSVMovie.h"
 #include "Movie.h"
+#include "ParseUtil.h"
 
 namespace sql = sqlite_orm;
 
