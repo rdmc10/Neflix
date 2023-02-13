@@ -5,7 +5,7 @@ Movie recommandation system written in Qt + C++.
 Final project of the Modern C++ applied in artificial intelligence course ( Applied Computer Science, Transilvania University of Brasov ).
 
 
-Made by:
+Contributors:
 @rdm10
 @mboboo
 @xMihai01
